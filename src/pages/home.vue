@@ -1,35 +1,33 @@
 <script setup lang="ts">
-// import axios from "@/axios";
-// import { awaitAxios } from "@/axios";
+import { useGlobalStore } from "@/store/app-store";
+
 defineOptions({
   layout: "layout-default"
 });
 
 const { t } = useI18n();
+const appStore = useGlobalStore();
+const router = useRouter();
 
-/** axios範例用法 */
-// const test = async () => {
-//   console.log("test12");
-//   const res = await axios.post("/api/example", { n1ame: "test" });
-//   const res = await awaitAxios("post", "/api/example", { nam1e: "test" });
-//   console.log(res, 'res');
-// };
-// test();
+onBeforeRouteLeave((to, from, next) => {
+  const animationTime = 200;
+  appStore.setLayoutLeaveAnimation(true);
+  setTimeout(() => {
+    next();
+    appStore.setLayoutLeaveAnimation(false);
+  }, animationTime);
+});
 </script>
 
 <template>
   <div>
-    <q-card class="home-card">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg" />
-
-      <q-card-section>
-        {{ t("global.hello") }}
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        {{ t("global.hello") }}
-      </q-card-section>
-    </q-card>
+    <q-btn
+      class="home-card"
+      color="primary"
+      :label="t('login')"
+      @click="() => router.push('/login')"
+    >
+    </q-btn>
   </div>
 </template>
 

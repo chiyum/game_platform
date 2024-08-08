@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import "@/assets/scss/main.scss";
+import { createPinia } from "pinia";
 import App from "./App.vue";
 
 /** _app */
@@ -14,10 +15,11 @@ import "quasar/src/css/index.sass";
 import i18n from "@/i18n";
 
 const VueApp = createApp(App);
-
+const pinia = createPinia();
 VueApp.use(router);
 VueApp.use(Layout);
 VueApp.use(Directives);
+VueApp.use(pinia);
 VueApp.use(Quasar, {
   plugins: {
     Loading,
