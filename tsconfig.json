@@ -25,7 +25,8 @@
     "strict": false, // 不啟用所有嚴格的類型檢查選項
     "noUnusedLocals": false, // 不報告未使用的局部變量的錯誤
     "noUnusedParameters": false, // 不報告未使用的參數的錯誤
-    "noFallthroughCasesInSwitch": true // 防止 switch 語句中的 case 落空，要求每個 case 都必須有 break 或 return
+    "noFallthroughCasesInSwitch": true, // 防止 switch 語句中的 case 落空，要求每個 case 都必須有 break 或 return
+    "types": ["ramda"]
   },
   "include": [
     "src/**/*.ts", // 包括 src 目錄下的所有 TypeScript 文件

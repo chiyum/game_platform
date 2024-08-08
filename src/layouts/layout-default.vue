@@ -2,17 +2,14 @@
 
 <template>
   <div class="layout-default">
-    <div class="layout-default-header">預設layout-header</div>
-    <slot />
+    <div class="layout-default-header"></div>
+    <div class="layout-default-main">
+      <slot />
+    </div>
+    <div class="layout-default-footer"></div>
   </div>
 </template>
 
-<style lang="scss">
-.layout-default {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
+<style lang="scss" scoped>
+@import "@/assets/scss/home.scss";
 </style>

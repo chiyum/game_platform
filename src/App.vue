@@ -9,7 +9,7 @@ const layout = computed(() => {
   if (isNil(route?.path)) return null;
   /*
     拿設定的 layout。
-    通常預設是layout-default，但如果該頁面沒有設定layout，則會使用layout-error 
+    通常預設是layout-default，但如果該頁面沒有設定layout，則會使用layout-error
     defaultTo 設定預設值
     path 取得物件的值 相當於route.meta.layout
    */
@@ -24,6 +24,19 @@ const layout = computed(() => {
   // const default = defaultTo("layout-error");
   // default(path(["meta", "layout"], store.state.route))
   return currentLayout;
+});
+
+const computeSize = (): void => {
+  /* 設計尺寸： 750 * 1334 */
+  /* 字體大小隨著螢幕寬度更改 */
+  document.getElementsByTagName("html")[0].style.cssText = `font-size: ${
+    (document.body.clientWidth / 750) * 100
+  }px`;
+};
+
+onMounted(() => {
+  computeSize();
+  window.addEventListener("resize", computeSize);
 });
 </script>
 
