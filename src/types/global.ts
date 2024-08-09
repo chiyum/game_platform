@@ -10,6 +10,10 @@ export declare interface ProgressTracker {
 
 export declare interface ImagePreloader {
   preloadImages(sources: string[]): Promise<void>;
-
   isImageLoaded(src: string): boolean;
+}
+
+export declare interface ProgressSource {
+  name: string;
+  weight: number;
 }

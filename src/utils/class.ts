@@ -1,4 +1,4 @@
-// implementations.ts
+import { ref, computed, Ref } from "vue";
 
 import { ImageLoader, ProgressTracker, ImagePreloader } from "@/types/global";
 
@@ -53,5 +53,39 @@ export class DefaultImagePreloader implements ImagePreloader {
 
   isImageLoaded(src: string): boolean {
     return this.loadedImages[src] || false;
+  }
+}
+
+/** 多個進度條載入 NOTE:搭載Vue */
+
+export class MultiProgressTracker {
+  private sources: Map<string, { progress: number; weight: number }> =
+    new Map();
+  private totalWeight: number = 0; // 權重
+  private progressRef: Ref<number> = ref(0);
+
+  addSource(name: string, weight: number = 1) {
+    this.sources.set(name, { progress: 0, weight });
+    this.totalWeight += weight;
+  }
+
+  updateProgress(name: string, progress: number) {
+    const source = this.sources.get(name);
+    if (source) {
+      source.progress = progress;
+      this.recalculateTotalProgress();
+    }
+  }
+
+  private recalculateTotalProgress() {
+    let totalProgress = 0;
+    for (const [, { progress, weight }] of this.sources) {
+      totalProgress += (progress * weight) / this.totalWeight;
+    }
+    this.progressRef.value = Math.round(totalProgress);
+  }
+
+  getTotalProgress(): Ref<number> {
+    return computed(() => this.progressRef.value);
   }
 }

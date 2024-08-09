@@ -6,7 +6,7 @@ import {
   DefaultImageLoader,
   DefaultProgressTracker,
   DefaultImagePreloader
-} from "@/models/global";
+} from "@/utils/class";
 
 export function useImagePreloader(imageSources: string[]) {
   const progressTracker: ProgressTracker = new DefaultProgressTracker();
