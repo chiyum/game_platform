@@ -37,6 +37,13 @@ const i18nOptions = {
 
 const i18n = createI18n(i18nOptions);
 
-export const useI18n = i18n;
+export const useI18n = () => {
+  // 後續可以增加自定義設定
+  const format = {
+    t: i18n.t,
+    ...i18n
+  };
+  return format;
+};
 
 export default i18n;

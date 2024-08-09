@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useImagePreloader } from "@/composable/imagePreload";
 import { getImageUrl } from "@/utils/getImageUrl";
-import i18n from "@/i18n";
+import { useI18n } from "@/i18n";
 // import CountUp from "vue-countup-v3";
 defineOptions({
   layout: "layout-loading"
 });
 
-const { t } = i18n;
+const { t } = useI18n();
 
 const imagesToPreload = [
   getImageUrl("home/gift_icon.png"),
