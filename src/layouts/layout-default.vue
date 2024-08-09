@@ -21,6 +21,7 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
       class="layout-default-footer"
       :class="['animated-footer', { 'animated-footer--leave': isAnimation }]"
     ></div>
+    <div class="layout-default-bg"></div>
   </div>
 </template>
 

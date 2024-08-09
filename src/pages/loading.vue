@@ -6,8 +6,14 @@ defineOptions({
 });
 
 const imagesToPreload = [
-  getImageUrl("/path/to/image1.jpg"),
-  getImageUrl("/path/to/image2.png")
+  getImageUrl("home/gift_icon.png"),
+  getImageUrl("home/slot_btn.png"),
+  getImageUrl("home/poker_btn.png"),
+  getImageUrl("home/mail_icon.png"),
+  getImageUrl("home/profile_img.png"),
+  getImageUrl("default_background.png"),
+  getImageUrl("downbar_nolight_bg.png"),
+  getImageUrl("topbar_bg.png")
   // ... 添加更多图片
 ];
 
