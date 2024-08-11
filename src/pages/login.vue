@@ -1,26 +1,31 @@
 <script setup lang="ts">
-import { useImagePreloader } from "@/composable/imagePreload";
-import { getImageUrl } from "@/utils/getImageUrl";
+import { useI18n } from "@/i18n";
+
 defineOptions({
   layout: "layout-loading"
 });
-
-const imagesToPreload = [
-  getImageUrl("/path/to/image1.jpg"),
-  getImageUrl("/path/to/image2.png")
-  // ... 添加更多图片
-];
-
-const { progress } = useImagePreloader(imagesToPreload);
+const { t } = useI18n();
+// 這邊之後做個動畫，讓登入的按鈕從下彈出，以避免轉換頁面時太突兀
 </script>
 
 <template>
-  <div>{{ progress }}</div>
+  <div class="login">
+    <div class="login-action">
+      <router-link to="/home">
+        <div>{{ t("login.google") }}</div>
+      </router-link>
+      <router-link to="/home">
+        <div>{{ t("login.facebook") }}</div>
+      </router-link>
+    </div>
+    <div class="login-later">
+      <router-link to="/home">
+        <div>{{ t("login.later") }}</div>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.home-card {
-  margin: 20px;
-  width: 300px;
-}
+@import "@/assets/scss/login.scss";
 </style>
