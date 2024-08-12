@@ -27,7 +27,7 @@ const createRoutes = (opts) => {
     {
       path: "/:pathMatch(.*)*",
       name: "not-match",
-      redirect: { name: "not-found" }
+      redirect: { name: "default-path" }
     }
   ];
 

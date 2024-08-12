@@ -6,11 +6,189 @@
   height: 100%;
   background: linear-gradient(180deg, #9900ff 0%, #4b0082 100%);
 
+  &-icon {
+    .piggy-bank {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .buy {
+      margin-top: 0.15rem;
+      width: 1.5rem;
+      height: 1rem;
+    }
+  }
+
   &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.2rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    padding-bottom: 0.15rem;
     height: 1.5rem;
     background-image: url("@/assets/images/topbar_bg.png");
     background-repeat: no-repeat;
     background-size: 100%;
+
+    &-data {
+      display: flex;
+      flex-direction: column;
+
+      &-amount {
+        $width-amount: 2.7rem;
+        $height-amount: 0.5rem;
+        position: relative;
+        //background: linear-gradient(180deg, rgba(9,5,28,1) 50%, rgba(52,2,97,1) 100%);
+        background: linear-gradient(180deg, rgba(144, 19, 192, 1) 50%, rgba(116, 48, 210, 1) 100%);
+        width: $width-amount;
+        height: $height-amount;
+        border-radius: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        &-text {
+          position: absolute;
+          right: 0.2rem;
+          //top:50%;
+          //left: 50%;
+          font-weight: bolder;
+          font-size: 0.31rem;
+          //transform: translate(-50%, -50%);
+          background: linear-gradient(to bottom, #FFF8BC, #FFDE1E); /* 定義漸層顏色 */
+          -webkit-background-clip: text; /* 設置背景裁剪為文字形狀 */
+          -webkit-text-fill-color: transparent; /* 使文字透明以顯示背景 */
+          z-index: 2;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: calc($width-amount - 1px);
+          height: calc($height-amount - 1px);
+          background: linear-gradient(180deg, rgba(9, 5, 28, 1) 50%, rgba(52, 2, 97, 1) 100%);
+          border-radius: 0.25rem;
+          z-index: 0;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: -0.05rem;
+          left: -0.1rem;
+          width: 0.55rem;
+          height: 0.65rem;
+          background-image: url("@/assets/images/home/coin.svg");
+          background-size: 100%;
+          background-repeat: no-repeat;
+          z-index: 2;
+        }
+      }
+
+      &-setting {
+        $width-setting: 1.25rem;
+        $height-setting: 0.4rem;
+        display: flex;
+        gap: 0.2rem;
+        position: relative;
+        top: 0.12rem;
+
+        div {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0 0.2rem;
+          font-size: 0.25rem;
+          width: $width-setting;
+          height: $height-setting;
+          font-weight: bold;
+          background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(177, 81, 199, 1) 100%);
+          border-radius: calc($height-setting / 2);
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc($width-setting - 1px);
+            height: calc($height-setting - 1px);
+            background: linear-gradient(180deg, #D3D3D3 0%, #080808 25%, #010101 75%, #570689 100%);
+            border-radius: calc($height-setting / 2);
+            z-index: 0;
+          }
+
+          &:nth-child(1) {
+            $width-setting-star: 1.15rem;
+            $height-setting-star: 0.4rem;
+            width: $width-setting-star;
+            height: $height-setting-star;
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: calc($width-setting-star - 1px);
+              height: calc($height-setting-star - 1px);
+              background: linear-gradient(180deg, #D3D3D3 0%, #080808 25%, #010101 75%, #570689 100%);
+              border-radius: calc($height-setting-star / 2);
+              z-index: 0;
+            }
+            &:before {
+              content: "";
+              position: absolute;
+              top: -0.1rem;
+              left: -0.15rem;
+              width: 0.55rem;
+              height: 0.55rem;
+              background-image: url("@/assets/images/home/star.svg");
+              background-size: 100%;
+              background-repeat: no-repeat;
+              z-index: 2;
+            }
+          }
+
+          &:nth-child(2) {
+            $width-setting-gem: 1.35rem;
+            $height-setting-gem: 0.4rem;
+            width: $width-setting-gem;
+            height: $height-setting-gem;
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: calc($width-setting-gem - 1px);
+              height: calc($height-setting-gem - 1px);
+              background: linear-gradient(180deg, #D3D3D3 0%, #080808 25%, #010101 75%, #570689 100%);
+              border-radius: calc($height-setting-gem / 2);
+              z-index: 0;
+            }
+            &:before {
+              content: "";
+              position: absolute;
+              top: -0.1rem;
+              left: 0;
+              width: 0.4rem;
+              height: 0.55rem;
+              background-image: url("@/assets/images/home/gem.svg");
+              background-size: 100%;
+              background-repeat: no-repeat;
+              z-index: 2;
+            }
+          }
+        }
+        &-text {
+          position: absolute;
+          z-index: 2;
+          color: #ffffff;
+        }
+      }
+    }
   }
 
   &-footer {
@@ -31,6 +209,7 @@
     //background-size: 100%;
     //background-repeat: no-repeat;
   }
+
   &-bg {
     position: absolute;
     left: 0;
@@ -77,6 +256,7 @@
 /* 應用到 header 的動畫 */
 .animated-header {
   animation: slideDown 0.5s ease-out forwards;
+
   &--leave {
     animation: slideUp 0.1s ease-out forwards;
   }
@@ -112,6 +292,7 @@
 
 .animated-footer {
   animation: slideDownFooter 0.5s ease-out forwards;
+
   &--leave {
     animation: slideUpFooter 0.1s ease-out forwards;
   }
