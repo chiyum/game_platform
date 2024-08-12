@@ -8,12 +8,12 @@
 
   &-icon {
     .piggy-bank {
-      width: 1rem;
-      height: 1rem;
+      width: 1.1rem;
+      height: 1.1rem;
     }
 
     .buy {
-      margin-top: 0.15rem;
+      margin-top: 0.25rem;
       width: 1.5rem;
       height: 1rem;
     }
@@ -41,20 +41,22 @@
         $height-amount: 0.5rem;
         position: relative;
         //background: linear-gradient(180deg, rgba(9,5,28,1) 50%, rgba(52,2,97,1) 100%);
-        background: linear-gradient(180deg, rgba(144, 19, 192, 1) 50%, rgba(116, 48, 210, 1) 100%);
-        width: $width-amount;
-        height: $height-amount;
-        border-radius: 0.25rem;
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        width: $width-amount;
+        height: $height-amount;
+        font-family: 'GenSekiGothic TW', "Outfit", "微軟正黑體", Microsoft JhengHei, Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 0.25rem;
+        background: linear-gradient(180deg, rgba(144, 19, 192, 1) 50%, rgba(116, 48, 210, 1) 100%);
 
         &-text {
           position: absolute;
           right: 0.2rem;
           //top:50%;
           //left: 50%;
-          font-weight: bolder;
+          font-weight: 900;
+          letter-spacing: -1px;
           font-size: 0.31rem;
           //transform: translate(-50%, -50%);
           background: linear-gradient(to bottom, #FFF8BC, #FFDE1E); /* 定義漸層顏色 */
@@ -96,6 +98,7 @@
         gap: 0.2rem;
         position: relative;
         top: 0.12rem;
+        font-family: 'GenSekiGothic TW', "Outfit", "微軟正黑體", Microsoft JhengHei, Tahoma, Geneva, Verdana, sans-serif;
 
         div {
           position: relative;

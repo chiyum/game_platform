@@ -34,9 +34,22 @@ const computeSize = (): void => {
   }px`;
 };
 
+// const waitFontLoad = async () => {
+//   document.fonts.load("16px GenSekiGothic TW").then(function (fonts) {
+//     console.log(fonts);
+//     if (fonts.length > 0) {
+//       console.log("GenSekiGothic TW has loaded.");
+//       // 在這裡執行字體加載完成後的操作
+//     } else {
+//       console.log("GenSekiGothic TW failed to load.");
+//     }
+//   });
+// };
+
 onMounted(() => {
   computeSize();
   window.addEventListener("resize", computeSize);
+
 });
 </script>
 

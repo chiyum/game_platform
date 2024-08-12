@@ -12,37 +12,42 @@ body {
   overflow-x: hidden;
 }
 
+// 1
 @font-face {
   font-family: 'GenSekiGothic TW';
-  src: url('@/assets/font/GenSekiGothic2-R.ttc') format('truetype-collection');
-  font-weight: 400;  // 正常字重
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'GenSekiGothic TW';
-  src: url('@/assets/font/GenSekiGothic2-B.ttc') format('truetype-collection');
-  font-weight: 700;  // 粗體字重
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'GenSekiGothic TW';
-  src: url('@/assets/font/GenSekiGothic2-M.ttc') format('truetype-collection');
-  font-weight: 500;  // 中等字重
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'GenSekiGothic TW';
-  src: url('@/assets/font/GenSekiGothic2-L.ttc') format('truetype-collection');
+  src: url('@/assets/font/GenSekiGothic2-L.woff') format('woff');
   font-weight: 300;  // 輕字重
   font-style: normal;
 }
 
+// 2
 @font-face {
   font-family: 'GenSekiGothic TW';
-  src: url('@/assets/font/GenSekiGothic2-H.ttc') format('truetype-collection');
+  src: url('@/assets/font/GenSekiGothic2-R.woff') format('woff');
+  font-weight: 400;  // 正常字重
+  font-style: normal;
+}
+
+// 3
+@font-face {
+  font-family: 'GenSekiGothic TW';
+  src: url('@/assets/font/GenSekiGothic2-M.woff') format('woff');
+  font-weight: 500;  // 中等字重
+  font-style: normal;
+}
+
+// 4
+@font-face {
+  font-family: 'GenSekiGothic TW';
+  src: url('@/assets/font/GenSekiGothic2-B.woff') format('woff');
+  font-weight: 700;  // 粗體字重
+  font-style: normal;
+}
+
+// 5
+@font-face {
+  font-family: 'GenSekiGothic TW';
+  src: url('@/assets/font/GenSekiGothic2-H.woff') format('woff');
   font-weight: 900;  // 重字重
   font-style: normal;
 }
