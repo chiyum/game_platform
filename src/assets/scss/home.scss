@@ -284,6 +284,7 @@ $select-width: 35%;
   align-items: center;
   gap: 0.3rem;
   padding-right: 0.1rem;
+  min-height: 1rem;
 
   &-item {
     .q-img {
@@ -304,6 +305,7 @@ $select-width: 35%;
       display: flex;
       width: 0.5rem;
       height: 100%;
+      border-radius: 50%;
       //backdrop-filter: brightness(60%); /* 設置背景模糊程度為 10px */
       //-webkit-backdrop-filter: brightness(60%); /* 為了兼容性，添加 -webkit- 前綴 */
       backdrop-filter: blur(1px); /* 設置背景模糊程度為 10px */
@@ -338,7 +340,8 @@ $select-width: 35%;
       color: #ffffff;
       background: linear-gradient(0deg, rgba(34, 21, 112, 1) 0%, rgba(72, 60, 185, 1) 100%);
       border-radius: 5px 2px 2px 5px;
-      img {
+
+      .q-img {
         width: 0.3rem;
         height: 0.3rem;
       }
@@ -350,11 +353,84 @@ $select-width: 35%;
         height: 0.2rem;
         transition: all 0.3s;
       }
+
       .q-img--down {
         transform: rotate(180deg);
       }
+
       border-radius: 2px 4px 4px 2px;
       background: linear-gradient(180deg, rgba(201, 35, 255, 1) 0%, rgba(157, 31, 255, 1) 25%, rgba(62, 1, 146, 1) 75%, rgba(138, 52, 221, 1) 100%);
+    }
+
+    &-options {
+      $options-border-radius: 10px;
+      background: linear-gradient(180deg, rgba(134, 74, 209, 1) 0%, rgba(101, 65, 203, 1) 50%, rgba(101, 65, 203, 1) 100%) !important;
+      border: #864AD1 1px solid;
+      border-radius: $options-border-radius !important;
+      padding: 1px;
+      overflow-x: hidden !important;
+
+      .q-list {
+        border: 1px solid #431978;
+        background: #431978 !important;
+        padding: 2px;
+        border-radius: $options-border-radius;
+
+        .q-item {
+          position: relative;
+
+          &:nth-child(1) {
+            border-radius: 8px 8px 0 0;
+          }
+
+          &:last-child {
+            border-radius: 0 0 8px 8px;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0.15rem;
+            display: flex;
+            height: 1.5px;
+            width: 100%;
+            background-image: url("@/assets/images/home/border.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+          }
+
+          &.q-item--active {
+            //background: linear-gradient(180deg, rgba(201,35,255,1) 0%, rgba(157,31,255,1) 50%, rgba(62,1,146,1) 100%);
+            background: linear-gradient(180deg, rgba(201, 35, 255, 1) 0%, rgba(157, 31, 255, 1) 30%, rgba(62, 1, 146, 1) 100%);
+
+            .q-item__section {
+              span {
+                color: #FFFFFF !important;
+                background: none; /* 定義漸層顏色 */
+                -webkit-background-clip: border-box; /* 將背景裁剪到文字形狀 */
+                -webkit-text-fill-color: currentColor; /* 使文字透明，顯示背景 */
+              }
+            }
+          }
+        }
+      }
+
+      .q-item__section {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        align-items: center;
+        //flex-direction: row;
+        //justify-content: space-between;
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(to bottom, #FFFFFF, #7454B8); /* 定義漸層顏色 */
+          -webkit-background-clip: text; /* 將背景裁剪到文字形狀 */
+          -webkit-text-fill-color: transparent; /* 使文字透明，顯示背景 */
+        }
+      }
     }
   }
 }

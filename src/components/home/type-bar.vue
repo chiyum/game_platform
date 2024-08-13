@@ -10,6 +10,8 @@ interface State {
   selectType: string;
   originList: GameObject[];
   showList: GameObject[];
+  options: { label: string; value: string; icon: string }[];
+  isShowSelect: boolean;
 }
 const state: State = reactive({
   selectType: "all",
@@ -17,8 +19,18 @@ const state: State = reactive({
   showList: computed(() => {
     if (state.selectType === "all") return state.originList;
     return state.originList.filter((item) => item.type === state.selectType);
-  })
+  }),
+  options: [
+    { label: "all", value: "all", icon: "type_bar_icon.svg" },
+    { label: "record", value: "record", icon: "record.svg" },
+    { label: "favorite", value: "favorite", icon: "record.svg" }
+  ],
+  isShowSelect: false
 });
+
+const changeSelectType = (type: string) => {
+  state.selectType = type;
+};
 </script>
 
 <template>
@@ -30,12 +42,37 @@ const state: State = reactive({
     </div>
     <div class="type-bar-select">
       <div class="type-bar-select-selected">
-        <img src="@/assets/images/home/type_bar_icon.svg" alt="" />
+        <q-icon>
+          <q-img src="@/assets/images/home/type_bar_icon.svg" alt="" />
+        </q-icon>
         <span>{{ t(`pages.home.all`) }}</span>
       </div>
-      <div class="type-bar-select-arrow">
-        <q-img src="@/assets/images/home/type_bar_arrow.svg" />
-      </div>
+      <q-btn class="type-bar-select-arrow">
+        <q-img
+          src="@/assets/images/home/type_bar_arrow.svg"
+          :class="{ 'q-img--down': state.isShowSelect }"
+        />
+        <q-menu class="type-bar-select-options">
+          <q-list style="min-width: 2.1rem">
+            <q-item
+              v-for="option in state.options"
+              :key="option.value"
+              :class="{ 'q-item--active': state.selectType === option.value }"
+              @click="changeSelectType(option.value)"
+              clickable
+            >
+              <q-item-section>
+                <q-icon style="width: 0.35rem">
+                  <q-img :src="getImageUrl(`home/${option.icon}`)" alt="icon" />
+                </q-icon>
+                <span>
+                  {{ t(`pages.home.${option.label}`) }}
+                </span>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
     </div>
   </div>
 </template>
