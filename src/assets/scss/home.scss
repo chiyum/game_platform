@@ -322,6 +322,9 @@
     //background-image: url("@/assets/images/default_background.png");
     //background-size: 100%;
     //background-repeat: no-repeat;
+    @media (max-height: 800px) and (min-width: 355px) {
+      padding-bottom: 1.8rem;
+    }
   }
 
   &-bg {
