@@ -4,9 +4,11 @@ import { FACK_GAME_LIST } from "@/contants/game";
 import getImageUrl from "@/utils/getImageUrl";
 import { useI18n } from "@/i18n";
 import { useGlobalStore } from "@/store/app-store";
+import { useGameStore } from "@/store/game-store";
 
 const { t } = useI18n();
 const appStore = useGlobalStore();
+const gameStore = useGameStore();
 
 interface State {
   selectType: string;
@@ -19,8 +21,15 @@ const state: State = reactive({
   selectType: "all",
   originList: FACK_GAME_LIST,
   showList: computed(() => {
-    if (state.selectType === "all") return state.originList;
-    return state.originList.filter((item) => item.type === state.selectType);
+    switch (state.selectType) {
+      case "all":
+        return state.originList;
+      case "record":
+        return state.originList.filter((item, index) => index > 1);
+      case "favorite":
+        return state.originList.filter((item, index) => index > 2);
+    }
+    return state.originList;
   }),
   options: [
     { label: "all", value: "all", icon: "type_bar_icon.svg" },
@@ -32,6 +41,7 @@ const state: State = reactive({
 
 const changeSelectType = (type: string) => {
   state.selectType = type;
+  gameStore.setGameType(state.selectType);
 };
 
 const onCloseOptions = () => {
@@ -41,6 +51,12 @@ const onCloseOptions = () => {
 const onShowOptions = () => {
   appStore.setLayoutDefaultMask(true);
 };
+
+const init = () => {
+  gameStore.setGameType(state.selectType);
+};
+
+init();
 </script>
 
 <template>

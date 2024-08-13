@@ -39,6 +39,11 @@ const computeSize = (): void => {
     (document.body.clientWidth / 750) * 100
   }px`;
 };
+
+const setVh = () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+};
 const imagesToPreload = [
   getImageUrl("home/gift_icon.svg"), // footer-icon
   getImageUrl("home/slot_btn.svg"), // footer-icon
@@ -83,7 +88,11 @@ watch(totalProgress, (value) => {
 
 onMounted(() => {
   computeSize();
-  window.addEventListener("resize", computeSize);
+  setVh();
+  window.addEventListener("resize", () => {
+    computeSize();
+    setVh();
+  });
 });
 </script>
 
