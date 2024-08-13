@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useGlobalStore } from "@/store/app-store";
 import TypeBar from "@/components/home/type-bar.vue";
+import Game from "@/components/home/game.vue";
+import Banner from "@/components/home/banner.vue";
 
 defineOptions({
   layout: "layout-default"
@@ -22,11 +24,9 @@ onBeforeRouteLeave((to, from, next) => {
 
 <template>
   <div class="home">
-    <div class="home-type-bar">
-      <TypeBar />
-    </div>
-    <div class="home-games"></div>
-    <div class="home-banner"></div>
+    <TypeBar />
+    <Game />
+    <Banner />
   </div>
 </template>
 
