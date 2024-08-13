@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 import createRoutes from "@/_app/routes";
-
+import { useGlobalStore } from "@/store/app-store";
 /* 設定預設導入頁面 */
 const options = {
   defaultPath: "/loading"
@@ -19,9 +19,13 @@ const router = createRouter({
   }
 });
 
-// router.beforeEach(async (to, from, next) => {
-//   console.log(from, to);
-//   next();
-// });
+router.beforeEach(async (to, from, next) => {
+  const appStore = useGlobalStore();
+  /** 首次加載必須進首頁 */
+  if (appStore.progress === 0 && to.path !== "/loading") {
+    next("/loading");
+  }
+  next();
+});
 
 export default router;

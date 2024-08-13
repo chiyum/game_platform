@@ -10,9 +10,7 @@ interface State {
 
 const state: State = reactive({
   gameList: computed(() => {
-    const gameGroup = setGameGroup(gameStore.gameList);
-    console.log(gameGroup);
-    return gameGroup;
+    return setGameGroup(gameStore.gameList);
   })
 });
 
