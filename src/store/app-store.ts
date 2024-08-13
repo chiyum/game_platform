@@ -13,6 +13,7 @@ export const useGlobalStore = defineStore("useGlobalStore", () => {
     mode: null
   });
   const progress = ref<number>(0);
+  const layoutDefaultMask = ref<boolean>(false);
 
   function setLayoutLeaveAnimation(isLeave: boolean) {
     layoutLeaveAnimation.value.startLeave = isLeave;
@@ -22,11 +23,17 @@ export const useGlobalStore = defineStore("useGlobalStore", () => {
     progress.value = value;
   }
 
+  function setLayoutDefaultMask(value: boolean) {
+    layoutDefaultMask.value = value;
+  }
+
   return {
     lang,
     progress,
+    layoutDefaultMask,
     layoutLeaveAnimation,
     setProgress,
+    setLayoutDefaultMask,
     setLayoutLeaveAnimation
   };
 });

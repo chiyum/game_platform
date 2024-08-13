@@ -3,8 +3,10 @@ import { GameObject } from "@/models/game";
 import { FACK_GAME_LIST } from "@/contants/game";
 import getImageUrl from "@/utils/getImageUrl";
 import { useI18n } from "@/i18n";
+import { useGlobalStore } from "@/store/app-store";
 
 const { t } = useI18n();
+const appStore = useGlobalStore();
 
 interface State {
   selectType: string;
@@ -31,6 +33,14 @@ const state: State = reactive({
 const changeSelectType = (type: string) => {
   state.selectType = type;
 };
+
+const onCloseOptions = () => {
+  appStore.setLayoutDefaultMask(false);
+};
+
+const onShowOptions = () => {
+  appStore.setLayoutDefaultMask(true);
+};
 </script>
 
 <template>
@@ -47,12 +57,12 @@ const changeSelectType = (type: string) => {
         </q-icon>
         <span>{{ t(`pages.home.all`) }}</span>
       </div>
-      <q-btn class="type-bar-select-arrow">
+      <q-btn class="type-bar-select-arrow" @click="onShowOptions">
         <q-img
           src="@/assets/images/home/type_bar_arrow.svg"
           :class="{ 'q-img--down': state.isShowSelect }"
         />
-        <q-menu class="type-bar-select-options">
+        <q-menu class="type-bar-select-options" @hide="onCloseOptions">
           <q-list style="min-width: 2.1rem">
             <q-item
               v-for="option in state.options"

@@ -5,7 +5,7 @@ import { useI18n } from "@/i18n";
 
 const appStore = useGlobalStore();
 const { t } = useI18n();
-const { layoutLeaveAnimation } = storeToRefs(appStore);
+const { layoutLeaveAnimation, layoutDefaultMask } = storeToRefs(appStore);
 
 interface State {
   amount: number;
@@ -136,6 +136,9 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
       </div>
     </div>
     <div class="layout-default-bg"></div>
+    <transition>
+      <div class="mask" v-if="layoutDefaultMask"></div>
+    </transition>
   </div>
 </template>
 

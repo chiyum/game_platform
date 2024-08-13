@@ -161,6 +161,7 @@
               width: auto;
             }
           }
+
           // 綠寶石
           &:nth-child(2) {
             $width-setting-gem: 1.35rem;
@@ -224,16 +225,19 @@
             top: 0.15rem;
             width: 100%;
             height: calc(100% - 0.15rem);
+
             .q-item {
               height: 50%;
               font-size: 0.28rem;
               font-weight: bold;
+
               &:nth-child(2) {
                 position: relative;
                 bottom: 0.1rem;
               }
             }
           }
+
           //background: red;
           .q-item__section {
             //display: flex;
@@ -246,6 +250,7 @@
             color: #FFFFFF;
           }
         }
+
         &-result {
           display: flex;
           align-items: center;
@@ -268,7 +273,7 @@
     background-image: url("@/assets/images/downbar_bg.png");
     background-repeat: no-repeat;
     background-size: 100%;
-
+    z-index: 11;
     &-item {
       display: flex;
       flex-direction: column;
@@ -354,6 +359,7 @@ $select-width: 35%;
     align-items: center;
     overflow-x: scroll;
     padding-left: 0.1rem;
+
     &::after {
       content: "";
       position: absolute;
@@ -491,6 +497,22 @@ $select-width: 35%;
   }
 }
 
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(#000000, 0.7);
+  z-index: 10;
+  //animation: fadeIn 0.3s forwards;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.1s;
+}
+
 /* header init 動畫 */
 @keyframes slideDown {
   0% {
@@ -564,7 +586,3 @@ $select-width: 35%;
   }
 }
 
-///* 應用到 footer 的動畫 */
-//.animated-footer {
-//  animation: slideUp 1s ease-out;
-//}
