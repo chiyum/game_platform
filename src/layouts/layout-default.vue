@@ -10,12 +10,16 @@ const { layoutLeaveAnimation } = storeToRefs(appStore);
 interface State {
   amount: number;
   level: number;
+  withoutAmount: number;
+  withoutLevel: number;
   gem: number;
 }
 
 const state: State = reactive({
   amount: 11900000,
   level: 3,
+  withoutAmount: 1000,
+  withoutLevel: 1000,
   gem: 1000
 });
 
@@ -39,8 +43,54 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         </div>
         <div class="layout-default-header-data-setting">
           <div>
-            <q-icon class="layout-default-header-data-setting-text">
+            <q-icon
+              id="level-start"
+              class="layout-default-header-data-setting-text"
+            >
               {{ `Lv ${state.level}` }}
+              <q-menu
+                class="layout-default-header-data-setting-detail"
+                self="top middle"
+              >
+                <q-list style="min-width: 2.1rem">
+                  <q-item>
+                    <q-item-section>
+                      <q-icon style="width: 0.35rem">
+                        <q-img
+                          src="@/assets/images/home/icon_xp.svg"
+                          alt="icon"
+                        />
+                      </q-icon>
+                      <span>
+                        {{ t("pages.home.without.xp") }}
+                      </span>
+                      <span class="layout-default-header-data-setting-result">
+                        {{
+                          new Intl.NumberFormat().format(state.withoutAmount)
+                        }}
+                      </span>
+                    </q-item-section>
+                  </q-item>
+                  <q-item>
+                    <q-item-section>
+                      <q-icon style="width: 0.35rem">
+                        <q-img
+                          src="@/assets/images/home/icon_directions_coin.svg"
+                          alt="icon"
+                        />
+                      </q-icon>
+                      <span>
+                        {{ t("pages.home.without.amount") }}
+                      </span>
+                      <span class="layout-default-header-data-setting-result">
+                        {{
+                          new Intl.NumberFormat().format(state.withoutAmount)
+                        }}k
+                      </span>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
             </q-icon>
           </div>
           <div>
