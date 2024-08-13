@@ -236,11 +236,19 @@
 
       &-middle {
         position: relative;
+
         .icon {
           position: absolute;
           top: -1.5rem;
           width: 2rem;
           height: 2rem;
+        }
+
+        .icon-str {
+          position: absolute;
+          top: 0.15rem;
+          width: 1.5rem;
+          height: 0.5rem;
         }
       }
     }
@@ -268,6 +276,88 @@
   }
 }
 
+$select-width: 35%;
+.type-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 65% $select-width;
+  align-items: center;
+  gap: 0.3rem;
+  padding-right: 0.1rem;
+
+  &-item {
+    .q-img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &-list {
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: $select-width;
+      display: flex;
+      width: 0.5rem;
+      height: 100%;
+      //backdrop-filter: brightness(60%); /* 設置背景模糊程度為 10px */
+      //-webkit-backdrop-filter: brightness(60%); /* 為了兼容性，添加 -webkit- 前綴 */
+      backdrop-filter: blur(1px); /* 設置背景模糊程度為 10px */
+      -webkit-backdrop-filter: blur(1px); /* 為了兼容性，添加 -webkit- 前綴 */
+    }
+  }
+
+  &-select {
+    $select-border-radius: 8px;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    padding: 1.5px;
+    padding-right: 3.5px;
+    width: 2.1rem;
+    height: 75%;
+    border: #B588FF 1px solid;
+    border-radius: $select-border-radius;
+    background: #000000;
+    gap: 0.03rem;
+
+    &-selected, &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-selected {
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+      font-size: 0.25rem;
+      color: #ffffff;
+      background: linear-gradient(0deg, rgba(34, 21, 112, 1) 0%, rgba(72, 60, 185, 1) 100%);
+      border-radius: 5px 2px 2px 5px;
+      img {
+        width: 0.3rem;
+        height: 0.3rem;
+      }
+    }
+
+    &-arrow {
+      .q-img {
+        width: 0.3rem;
+        height: 0.2rem;
+        transition: all 0.3s;
+      }
+      .q-img--down {
+        transform: rotate(180deg);
+      }
+      border-radius: 2px 4px 4px 2px;
+      background: linear-gradient(180deg, rgba(201, 35, 255, 1) 0%, rgba(157, 31, 255, 1) 25%, rgba(62, 1, 146, 1) 75%, rgba(138, 52, 221, 1) 100%);
+    }
+  }
+}
 
 /* header init 動畫 */
 @keyframes slideDown {

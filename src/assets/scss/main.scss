@@ -51,3 +51,26 @@ body {
   font-weight: 900;  // 重字重
   font-style: normal;
 }
+
+
+// global class
+
+/* 對於Webkit瀏覽器(Chrome, Safari等) */
+.scrollable-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* 對於Firefox */
+.scrollable-content {
+  scrollbar-width: none;
+}
+
+/* 對於IE和Edge */
+.scrollable-content {
+  -ms-overflow-style: none;
+}
+
+/* 確保元素可以滾動 */
+.scrollable-content {
+  overflow: auto;
+}

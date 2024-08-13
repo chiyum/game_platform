@@ -73,8 +73,8 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         <span>{{ t("pages.home.gift") }}</span>
       </div>
       <div class="layout-default-footer-item layout-default-footer-item-middle">
-        <q-img class="icon" src="@/assets/images/home/money_footer.svg" />
-        <span></span>
+        <q-img class="icon" src="@/assets/images/home/footer_coin.svg" />
+        <q-img class="icon-str" src="@/assets/images/home/footer_str.png" />
       </div>
       <div class="layout-default-footer-item">
         <q-img class="icon" src="@/assets/images/home/bingo_icon.svg" />

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useGlobalStore } from "@/store/app-store";
+import TypeBar from "@/components/home/type-bar.vue";
 
 defineOptions({
   layout: "layout-default"
 });
 
-const { t } = useI18n();
+// const { t } = useI18n();
 const appStore = useGlobalStore();
-const router = useRouter();
+// const router = useRouter();
 
 onBeforeRouteLeave((to, from, next) => {
   const animationTime = 200;
@@ -20,20 +21,15 @@ onBeforeRouteLeave((to, from, next) => {
 </script>
 
 <template>
-  <div>
-    <q-btn
-      class="home-card"
-      color="primary"
-      :label="t('login')"
-      @click="() => router.push('/login')"
-    >
-    </q-btn>
+  <div class="home">
+    <div class="home-type-bar">
+      <TypeBar />
+    </div>
+    <div class="home-games"></div>
+    <div class="home-banner"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.home-card {
-  margin: 20px;
-  width: 300px;
-}
+@import "@/assets/scss/home.scss";
 </style>
