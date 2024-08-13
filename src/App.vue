@@ -40,14 +40,18 @@ const computeSize = (): void => {
   }px`;
 };
 const imagesToPreload = [
-  getImageUrl("home/gift_icon.png"),
-  getImageUrl("home/slot_btn.png"),
-  getImageUrl("home/poker_btn.png"),
-  getImageUrl("home/mail_icon.png"),
-  getImageUrl("home/profile_img.png"),
-  getImageUrl("default_background.png"),
-  getImageUrl("downbar_nolight_bg.png"),
-  getImageUrl("topbar_bg.png")
+  getImageUrl("home/gift_icon.svg"), // footer-icon
+  getImageUrl("home/slot_btn.svg"), // footer-icon
+  getImageUrl("home/poker_btn.svg"), // footer-icon
+  getImageUrl("home/mail_icon.svg"), // footer-icon
+  getImageUrl("home/footer_coin.svg"), // footer-icon
+  getImageUrl("home/profile_img.png"), // header-icon
+  getImageUrl("home/footer_str.png"), // footer-icon
+  getImageUrl("home/buy.svg"), // footer-icon
+  getImageUrl("home/piggy_bank.svg"), // footer-icon
+  getImageUrl("default_background.png"), // background
+  getImageUrl("downbar_bg.png.png"), // footer
+  getImageUrl("topbar_bg.png") // header
   // ... 添加更多图片
 ];
 const { progress: imageProgress } = useImagePreloader(imagesToPreload);
