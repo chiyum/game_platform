@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useGlobalStore } from "@/store/app-store";
 import { storeToRefs } from "pinia";
+import { useI18n } from "@/i18n";
 
 const appStore = useGlobalStore();
+const { t } = useI18n();
 const { layoutLeaveAnimation } = storeToRefs(appStore);
 
 interface State {
@@ -61,7 +63,28 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
     <div
       class="layout-default-footer"
       :class="['animated-footer', { 'animated-footer--leave': isAnimation }]"
-    ></div>
+    >
+      <div class="layout-default-footer-item">
+        <q-img class="icon" src="@/assets/images/home/mail_icon.svg" />
+        <span>{{ t("pages.home.messages") }}</span>
+      </div>
+      <div class="layout-default-footer-item">
+        <q-img class="icon" src="@/assets/images/home/gift_icon.svg" />
+        <span>{{ t("pages.home.gift") }}</span>
+      </div>
+      <div class="layout-default-footer-item layout-default-footer-item-middle">
+        <q-img class="icon" src="@/assets/images/home/money_footer.svg" />
+        <span></span>
+      </div>
+      <div class="layout-default-footer-item">
+        <q-img class="icon" src="@/assets/images/home/bingo_icon.svg" />
+        <span>{{ t("pages.home.award") }}</span>
+      </div>
+      <div class="layout-default-footer-item">
+        <q-img class="icon" src="@/assets/images/home/vip_icon.svg" />
+        <span>{{ t("pages.home.vip") }}</span>
+      </div>
+    </div>
     <div class="layout-default-bg"></div>
   </div>
 </template>
