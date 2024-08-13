@@ -12,14 +12,21 @@ export const useGlobalStore = defineStore("useGlobalStore", () => {
     startLeave: false,
     mode: null
   });
+  const progress = ref<number>(0);
 
   function setLayoutLeaveAnimation(isLeave: boolean) {
     layoutLeaveAnimation.value.startLeave = isLeave;
   }
 
+  function setProgress(value: number) {
+    progress.value = value;
+  }
+
   return {
     lang,
+    progress,
     layoutLeaveAnimation,
+    setProgress,
     setLayoutLeaveAnimation
   };
 });

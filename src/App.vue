@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { isNil, defaultTo, path } from "ramda";
+import { useImagePreloader } from "@/composable/imagePreload";
+import { useMultiProgress } from "@/composable/mutiProgressTracker";
+import { getImageUrl } from "@/utils/getImageUrl";
+import { useGlobalStore } from "@/store/app-store";
 
 const route = useRoute();
+const router = useRouter();
+const appStore = useGlobalStore();
 
 const layout = computed(() => {
   /* 一開始都是 undefined */
@@ -33,6 +39,43 @@ const computeSize = (): void => {
     (document.body.clientWidth / 750) * 100
   }px`;
 };
+const imagesToPreload = [
+  getImageUrl("home/gift_icon.png"),
+  getImageUrl("home/slot_btn.png"),
+  getImageUrl("home/poker_btn.png"),
+  getImageUrl("home/mail_icon.png"),
+  getImageUrl("home/profile_img.png"),
+  getImageUrl("default_background.png"),
+  getImageUrl("downbar_nolight_bg.png"),
+  getImageUrl("topbar_bg.png")
+  // ... 添加更多图片
+];
+const { progress: imageProgress } = useImagePreloader(imagesToPreload);
+const { addSource, updateProgress, totalProgress } = useMultiProgress();
+// 添加圖片預加載進度源
+addSource("imagePreloader", 1);
+
+// 添加另一個進度源
+addSource("pendingProgress", 1);
+
+/** 為了進度條可以讓使用者看到正常跑動，而不是載入太快一下就跳轉顯得太突兀，加入了pending功能 */
+watch(imageProgress, (value) => {
+  updateProgress("imagePreloader", value);
+  if (value === 100) {
+    updateProgress("pendingProgress", 10);
+    setTimeout(() => {
+      updateProgress("pendingProgress", 100);
+    }, 500);
+  }
+});
+
+watch(totalProgress, (value) => {
+  appStore.setProgress(value);
+  /** 載入完成前往登入頁面 */
+  if (value === 100) {
+    router.push("/login");
+  }
+});
 
 onMounted(() => {
   computeSize();
