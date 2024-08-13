@@ -39,9 +39,9 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         </div>
         <div class="layout-default-header-data-setting">
           <div>
-            <span class="layout-default-header-data-setting-text">
+            <q-icon class="layout-default-header-data-setting-text">
               {{ `Lv ${state.level}` }}
-            </span>
+            </q-icon>
           </div>
           <div>
             <span class="layout-default-header-data-setting-text">

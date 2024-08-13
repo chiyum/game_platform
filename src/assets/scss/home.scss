@@ -125,6 +125,7 @@
             z-index: 0;
           }
 
+          // 星星
           &:nth-child(1) {
             $width-setting-star: 1.15rem;
             $height-setting-star: 0.4rem;
@@ -155,8 +156,12 @@
               background-repeat: no-repeat;
               z-index: 2;
             }
-          }
 
+            .q-icon {
+              width: auto;
+            }
+          }
+          // 綠寶石
           &:nth-child(2) {
             $width-setting-gem: 1.35rem;
             $height-setting-gem: 0.4rem;
@@ -194,6 +199,7 @@
           position: absolute;
           z-index: 2;
           color: #ffffff;
+          font-style: normal;
         }
       }
     }
@@ -297,7 +303,7 @@ $select-width: 35%;
     display: flex;
     align-items: center;
     overflow-x: scroll;
-
+    padding-left: 0.1rem;
     &::after {
       content: "";
       position: absolute;
