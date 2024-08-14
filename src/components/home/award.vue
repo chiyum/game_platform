@@ -2,11 +2,12 @@
 import { defineExpose } from "vue";
 import { useI18n } from "@/i18n";
 import { getRemInPixels } from "@/utils/getRemInpixels";
+import getImageUrl from "@/utils/getImageUrl";
 
 const { t } = useI18n();
 interface Icon {
-  class: string;
-  text: string;
+  src: string;
+  value: string;
 }
 
 interface State {
@@ -20,21 +21,27 @@ interface State {
 
 // 圖標數據
 const icons: Icon[] = [
-  { class: "fa fa-facebook", text: "1" },
-  { class: "fa fa-twitter", text: "2" },
-  { class: "fa fa-instagram", text: "3" },
-  { class: "fa fa-youtube", text: "4" },
-  { class: "fa fa-github", text: "5" },
-  { class: "fa fa-wordpress", text: "6" }
+  { src: getImageUrl("home/award_1.png"), value: "1" },
+  { src: getImageUrl("home/award_2.png"), value: "2" },
+  { src: getImageUrl("home/award_3.png"), value: "3" },
+  { src: getImageUrl("home/award_1.png"), value: "1" },
+  { src: getImageUrl("home/award_2.png"), value: "2" },
+  { src: getImageUrl("home/award_3.png"), value: "3" },
+  { src: getImageUrl("home/award_1.png"), value: "1" },
+  { src: getImageUrl("home/award_2.png"), value: "2" },
+  { src: getImageUrl("home/award_3.png"), value: "3" },
+  { src: getImageUrl("home/award_1.png"), value: "1" },
+  { src: getImageUrl("home/award_2.png"), value: "2" },
+  { src: getImageUrl("home/award_3.png"), value: "3" }
 ];
 
 const currentRotation = ref(0);
 const rem = ref(getRemInPixels());
 
 const state: State = {
-  centerX: 2 * rem.value, // 中心點X
-  centerY: 4 * rem.value, // 中心點Y
-  orbitRadius: 3.3 * rem.value, // 軌道半徑
+  centerX: 2.3 * rem.value, // 中心點X
+  centerY: 6.5 * rem.value, // 中心點Y
+  orbitRadius: 5.7 * rem.value, // 軌道半徑
   icons: icons, // 圖標數據
   totalIcons: computed(() => state.icons.length) // 圖標總數
 };
@@ -95,9 +102,9 @@ onMounted(() => {
 <template>
   <div class="award">
     <div class="award-header">
-      <span class="award-header-left-arrow" @click="rotateLeft"></span>
+      <span class="award-header-left-arrow" @click="rotateRight"></span>
       {{ t("pages.home.award.take") }}
-      <span class="award-header-right-arrow" @click="rotateRight"></span>
+      <span class="award-header-right-arrow" @click="rotateLeft"></span>
     </div>
     <div class="award-main">
       <div class="container">
@@ -112,8 +119,7 @@ onMounted(() => {
           class="orbiting-icon"
           :style="getIconStyle(index)"
         >
-          <i :class="icon.class"></i>
-          {{ icon.text }}
+          <q-img :src="icon.src"></q-img>
         </div>
       </div>
     </div>

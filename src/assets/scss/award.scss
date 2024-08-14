@@ -64,19 +64,17 @@
     //  z-index: 10; /* 確保中心圖標在最上層 */
     //}
 
-    $icon-size: 3rem;
-
     .orbiting-icon {
       position: absolute;
-      width: $icon-size;
-      height: $icon-size;
-      background-color: #fff;
-      border-radius: 50%;
+      width: 2.3rem;
+      height: 2.9rem;
+      //background-color: #fff;
+      //border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 20px;
-      color: #000;
+      //color: #000;
       transition: all 0.5s ease; /* 添加過渡效果 */
     }
 
