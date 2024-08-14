@@ -40,8 +40,8 @@ const rem = ref(getRemInPixels());
 
 const state: State = {
   centerX: 2.3 * rem.value, // 中心點X
-  centerY: 6.5 * rem.value, // 中心點Y
-  orbitRadius: 5.7 * rem.value, // 軌道半徑
+  centerY: 5.5 * rem.value, // 中心點Y
+  orbitRadius: 4.9 * rem.value, // 軌道半徑
   icons: icons, // 圖標數據
   totalIcons: computed(() => state.icons.length) // 圖標總數
 };
@@ -68,12 +68,16 @@ const getIconStyle = (index: number): any => {
   // 計算 x 和 y 坐標
   const x = state.centerX + Math.sin(radian) * state.orbitRadius;
   const y = state.centerY - Math.cos(radian) * state.orbitRadius;
+  const isVisible = angle >= 330 || angle < 40;
   // 返回樣式對象
   return {
     position: "absolute",
     left: "0px",
     top: "0px",
-    transform: `translate(${x}px, ${y}px)`
+    transform: `translate(${x}px, ${y}px)`,
+    opacity: isVisible ? 1 : 0,
+    visibility: isVisible ? "visible" : "hidden",
+    transition: "all 0.3s ease" // 添加過渡效果
   };
 };
 
