@@ -1,5 +1,5 @@
 .banner {
-  width: 7rem;
+  width: 6.9rem;
   margin: 0 auto;
   padding: 2px;
   height: 3.2rem;
@@ -11,7 +11,7 @@
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    background: #FFFFFF;
+    background: transparent;
 
     .swiper-slide {
       width: 100% !important;
@@ -19,10 +19,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 20px;
+      background: transparent;
+      //border-radius: 20px;
 
       .q-img {
-        border-radius: 20px;
+        //border-radius: 20px;
       }
     }
   }

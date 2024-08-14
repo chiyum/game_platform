@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Award from "@/components/home/award.vue";
 import { useGlobalStore } from "@/store/app-store";
 import { storeToRefs } from "pinia";
 import { useI18n } from "@/i18n";
@@ -135,6 +136,7 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         <span>{{ t("pages.home.vip") }}</span>
       </div>
     </div>
+    <Award />
     <div class="layout-default-bg"></div>
     <transition>
       <div class="mask" v-if="layoutDefaultMask"></div>

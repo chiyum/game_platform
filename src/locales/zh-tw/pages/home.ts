@@ -7,5 +7,6 @@ export default {
   record: "遊玩紀錄",
   favorite: "我的最愛",
   "without.amount": "下階級金幣",
-  "without.xp": "下階級尚需"
+  "without.xp": "下階級尚需",
+  "award.take": "領取獎勵"
 };
