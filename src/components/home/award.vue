@@ -39,7 +39,7 @@ const currentRotation = ref(0);
 const rem = ref(getRemInPixels());
 
 const state: State = {
-  centerX: 2.3 * rem.value, // 中心點X
+  centerX: 2.4 * rem.value, // 中心點X
   centerY: 5.5 * rem.value, // 中心點Y
   orbitRadius: 4.9 * rem.value, // 軌道半徑
   icons: icons, // 圖標數據
