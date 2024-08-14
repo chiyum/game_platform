@@ -14,6 +14,8 @@ interface State {
   withoutAmount: number;
   withoutLevel: number;
   gem: number;
+  isOpenAward: boolean;
+  isLockClickOutside: boolean;
 }
 
 const state: State = reactive({
@@ -21,8 +23,34 @@ const state: State = reactive({
   level: 3,
   withoutAmount: 1000,
   withoutLevel: 1000,
-  gem: 1000
+  gem: 1000,
+  isOpenAward: false,
+  isLockClickOutside: false
 });
+
+const onToggleAward = (): void => {
+  /** 當為關閉要打開的時候，就先鎖定click outside */
+  if (!state.isOpenAward) {
+    state.isLockClickOutside = true;
+    /** 5毫秒之後再解鎖 */
+    setTimeout(() => {
+      state.isLockClickOutside = false;
+    }, 500);
+  }
+  if (state.isOpenAward) onCloseAward();
+  else onOpenAward();
+};
+
+const onOpenAward = (): void => {
+  state.isOpenAward = true;
+  appStore.setLayoutDefaultMask(true);
+};
+
+const onCloseAward = (): void => {
+  if (!state.isOpenAward || state.isLockClickOutside) return;
+  state.isOpenAward = false;
+  appStore.setLayoutDefaultMask(false);
+};
 
 const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
 </script>
@@ -123,7 +151,10 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         <q-img class="icon" src="@/assets/images/home/gift_icon.svg" />
         <span>{{ t("pages.home.gift") }}</span>
       </div>
-      <div class="layout-default-footer-item layout-default-footer-item-middle">
+      <div
+        class="layout-default-footer-item layout-default-footer-item-middle"
+        @click="onToggleAward"
+      >
         <q-img class="icon" src="@/assets/images/home/footer_coin.svg" />
         <q-img class="icon-str" src="@/assets/images/home/footer_str.png" />
       </div>
@@ -136,7 +167,7 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         <span>{{ t("pages.home.vip") }}</span>
       </div>
     </div>
-    <Award />
+    <Award v-click-outsize="onCloseAward" v-if="state.isOpenAward" />
     <div class="layout-default-bg"></div>
     <transition>
       <div class="mask" v-if="layoutDefaultMask"></div>
