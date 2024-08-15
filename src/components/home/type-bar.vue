@@ -79,7 +79,7 @@ init();
           :class="{ 'q-img--down': state.isShowSelect }"
         />
         <q-menu class="type-bar-select-options" @hide="onCloseOptions">
-          <q-list style="min-width: 2.1rem">
+          <q-list style="min-width: 2.1rem; white-space: nowrap">
             <q-item
               v-for="option in state.options"
               :key="option.value"

@@ -387,7 +387,7 @@ $select-width: 35%;
     padding: 1.5px;
     padding-right: 3.5px;
     width: 2.1rem;
-    height: 75%;
+    min-height: 75%;
     border: #B588FF 1px solid;
     border-radius: $select-border-radius;
     background: #000000;
@@ -397,6 +397,7 @@ $select-width: 35%;
       display: flex;
       align-items: center;
       justify-content: center;
+      max-height: 100%;
     }
 
     &-selected {
