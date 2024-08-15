@@ -10,7 +10,7 @@ const options = {
 /* 建立router */
 const router = createRouter({
   //hash模式
-  history: createWebHashHistory(),
+  history: createWebHashHistory(import.meta.env.VITE_ROUTE_BASE),
   //掛載處理好的routes
   routes: createRoutes(options) as Array<RouteRecordRaw>,
   scrollBehavior() {

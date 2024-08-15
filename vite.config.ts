@@ -7,6 +7,7 @@ import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/game_platform/", // 設置基礎路徑 為了配合github action
   plugins: [
     vue({
       template: { transformAssetUrls }
@@ -90,8 +91,8 @@ export default defineConfig({
           return `assets/${extType}/[name]-[hash][extname]`; // 將資源文件輸出到對應的文件夾
         },
         // 定義代碼塊的輸出路徑和命名規則
-        chunkFileNames: "admin_assets/js/[name]-[hash].js",
-        entryFileNames: "admin_assets/js/[name]-[hash].js",
+        chunkFileNames: "assets/js/[name]-[hash].js",
+        entryFileNames: "assets/js/[name]-[hash].js",
         // 手動定義代碼分塊策略
         manualChunks(id) {
           if (id.includes("node_modules")) {
