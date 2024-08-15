@@ -365,19 +365,19 @@ $select-width: 35%;
     overflow-x: scroll;
     padding-left: 0.1rem;
 
-    &::after {
-      content: "";
-      position: absolute;
-      right: $select-width;
-      display: flex;
-      width: 0.5rem;
-      height: 100%;
-      border-radius: 50%;
-      //backdrop-filter: brightness(60%); /* 設置背景模糊程度為 10px */
-      //-webkit-backdrop-filter: brightness(60%); /* 為了兼容性，添加 -webkit- 前綴 */
-      backdrop-filter: blur(1px); /* 設置背景模糊程度為 10px */
-      -webkit-backdrop-filter: blur(1px); /* 為了兼容性，添加 -webkit- 前綴 */
-    }
+    //&::after {
+    //  content: "";
+    //  position: absolute;
+    //  right: $select-width;
+    //  display: flex;
+    //  width: 0.5rem;
+    //  height: 100%;
+    //  border-radius: 50%;
+    //  //backdrop-filter: brightness(60%); /* 設置背景模糊程度為 10px */
+    //  //-webkit-backdrop-filter: brightness(60%); /* 為了兼容性，添加 -webkit- 前綴 */
+    //  backdrop-filter: blur(1px); /* 設置背景模糊程度為 10px */
+    //  -webkit-backdrop-filter: blur(1px); /* 為了兼容性，添加 -webkit- 前綴 */
+    //}
   }
 
   &-select {
