@@ -12,10 +12,10 @@ const { t } = useI18n();
   <div class="login">
     <div class="login-action">
       <router-link to="/home">
-        <div>{{ t("login.google") }}</div>
+        <div class="login-action-google">{{ t("login.google") }}</div>
       </router-link>
       <router-link to="/home">
-        <div>{{ t("login.facebook") }}</div>
+        <div class="login-action-facebook">{{ t("login.facebook") }}</div>
       </router-link>
     </div>
     <div class="login-later">

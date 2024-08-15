@@ -18,13 +18,13 @@
       background-size: 100%;
       background-repeat: no-repeat;
 
-      &:nth-child(1) {
-        background-image: url("@/assets/images/google_btn.png");
-      }
+    }
+    &-google {
+      background-image: url("@/assets/images/google_btn.png");
+    }
 
-      &:nth-child(2) {
-        background-image: url("@/assets/images/facebook_btn.png");
-      }
+    &-facebook {
+      background-image: url("@/assets/images/facebook_btn.png");
     }
   }
 
