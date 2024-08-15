@@ -56,8 +56,14 @@ const imagesToPreload = [
   getImageUrl("home/piggy_bank.svg"), // footer-icon
   getImageUrl("default_background.png"), // background
   getImageUrl("downbar_bg.png.png"), // footer
-  getImageUrl("topbar_bg.png") // header
-  // ... 添加更多图片
+  getImageUrl("topbar_bg.png"), // header
+  getImageUrl("home/award_bg.png"), // header
+  getImageUrl("home/award_1.png"), // header
+  getImageUrl("home/award_2.png"), // header
+  getImageUrl("home/award_3.png"), // header
+  // login
+  getImageUrl("facebook_btn.png"), // header
+  getImageUrl("google_btn.png") // header
 ];
 const { progress: imageProgress } = useImagePreloader(imagesToPreload);
 const { addSource, updateProgress, totalProgress } = useMultiProgress();
