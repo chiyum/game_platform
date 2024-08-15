@@ -4,6 +4,7 @@ import { useImagePreloader } from "@/composable/imagePreload";
 import { useMultiProgress } from "@/composable/mutiProgressTracker";
 import { getImageUrl } from "@/utils/getImageUrl";
 import { useGlobalStore } from "@/store/app-store";
+import { DefaultImageLoader } from "@/utils/class";
 
 const route = useRoute();
 const router = useRouter();
@@ -50,7 +51,7 @@ const imagesToPreload = [
   getImageUrl("home/poker_btn.svg"), // footer-icon
   getImageUrl("home/mail_icon.svg"), // footer-icon
   getImageUrl("home/footer_coin.svg"), // footer-icon
-  getImageUrl("home/profile_img.png"), // header-icon
+  // getImageUrl("home/profile_img.png"), // header-icon
   getImageUrl("home/footer_str.png"), // footer-icon
   getImageUrl("home/buy.svg"), // footer-icon
   getImageUrl("home/piggy_bank.svg"), // footer-icon
@@ -66,7 +67,12 @@ const imagesToPreload = [
   getImageUrl("google_btn.png") // header
   // loading
 ];
-const { progress: imageProgress } = useImagePreloader(imagesToPreload);
+const { totalProgress: imageProgress } = useImagePreloader(
+  imagesToPreload,
+  () => {
+    console.log("imageProgress 圖片加載完成", imageProgress.value);
+  }
+);
 const { addSource, updateProgress, totalProgress } = useMultiProgress();
 // 添加圖片預加載進度源
 addSource("imagePreloader", 1);
@@ -74,10 +80,13 @@ addSource("imagePreloader", 1);
 // 添加另一個進度源
 addSource("pendingProgress", 1);
 
-const init = () => {
-  fetch()
-  getImageUrl("Loading.png");
+const init = async () => {
+  /** 優先載入Loading背景圖片 */
+  const defaultImageLoader = new DefaultImageLoader();
+  await defaultImageLoader.load(getImageUrl("Loading.png"));
 };
+
+init();
 
 /** 為了進度條可以讓使用者看到正常跑動，而不是載入太快一下就跳轉顯得太突兀，加入了pending功能 */
 watch(imageProgress, (value) => {

@@ -5,7 +5,7 @@ export declare interface ImageLoader {
 
 export declare interface ProgressTracker {
   updateProgress(loaded: number, total: number): void;
-  getProgress(): number;
+  getProgress(): Ref<number>;
 }
 
 export declare interface ImagePreloader {
