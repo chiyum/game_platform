@@ -45,7 +45,6 @@ const setVh = () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 };
 const imagesToPreload = [
-  getImageUrl("Loading.png"),
   getImageUrl("home/gift_icon.svg"), // footer-icon
   getImageUrl("home/slot_btn.svg"), // footer-icon
   getImageUrl("home/poker_btn.svg"), // footer-icon
@@ -74,6 +73,11 @@ addSource("imagePreloader", 1);
 
 // 添加另一個進度源
 addSource("pendingProgress", 1);
+
+const init = () => {
+  fetch()
+  getImageUrl("Loading.png");
+};
 
 /** 為了進度條可以讓使用者看到正常跑動，而不是載入太快一下就跳轉顯得太突兀，加入了pending功能 */
 watch(imageProgress, (value) => {
