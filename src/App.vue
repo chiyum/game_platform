@@ -45,6 +45,7 @@ const setVh = () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 };
 const imagesToPreload = [
+  getImageUrl("Loading.png"),
   getImageUrl("home/gift_icon.svg"), // footer-icon
   getImageUrl("home/slot_btn.svg"), // footer-icon
   getImageUrl("home/poker_btn.svg"), // footer-icon
@@ -63,9 +64,8 @@ const imagesToPreload = [
   getImageUrl("home/award_3.png"), // footer
   // login
   getImageUrl("facebook_btn.png"), // header
-  getImageUrl("google_btn.png"), // header
+  getImageUrl("google_btn.png") // header
   // loading
-  getImageUrl("Loading.png")
 ];
 const { progress: imageProgress } = useImagePreloader(imagesToPreload);
 const { addSource, updateProgress, totalProgress } = useMultiProgress();
