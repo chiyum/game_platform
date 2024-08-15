@@ -45,10 +45,12 @@ const changeSelectType = (type: string) => {
 };
 
 const onCloseOptions = () => {
+  state.isShowSelect = false;
   appStore.setLayoutDefaultMask(false);
 };
 
 const onShowOptions = () => {
+  state.isShowSelect = true;
   appStore.setLayoutDefaultMask(true);
 };
 
@@ -75,8 +77,9 @@ init();
       </div>
       <q-btn class="type-bar-select-arrow" @click="onShowOptions">
         <q-img
+          class="type-bar-select-arrow-icon"
           src="@/assets/images/home/type_bar_arrow.svg"
-          :class="{ 'q-img--down': state.isShowSelect }"
+          :class="{ 'type-bar-select-arrow-icon--down': state.isShowSelect }"
         />
         <q-menu class="type-bar-select-options" @hide="onCloseOptions">
           <q-list style="min-width: 2.5rem; white-space: nowrap">

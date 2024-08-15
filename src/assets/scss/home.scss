@@ -421,6 +421,11 @@ $select-width: 40%;
         height: 0.2rem;
         transition: all 0.3s;
       }
+      &-icon {
+        &--down {
+          transform: rotate(180deg);
+        }
+      }
 
       .q-img--down {
         transform: rotate(180deg);
