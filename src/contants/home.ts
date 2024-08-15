@@ -1,6 +1,6 @@
 import { getImageUrl } from "@/utils/getImageUrl";
 
-const defaultBanner = getImageUrl("home/banner/banner1.png");
+const defaultBanner = getImageUrl("home/banner/banner2.png");
 export const BANNERS = [
   {
     id: 1,

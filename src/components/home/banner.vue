@@ -13,12 +13,14 @@ const modules = [Navigation, Pagination, Autoplay];
 interface State {
   banners: { src: string; title: string; id: number }[];
   activeIndex: number;
+  realIndex: number;
 }
 
 const swiperInstance = ref<SwiperType | null>(null);
 
 const state: State = reactive({
   banners: BANNERS,
+  realIndex: 0,
   activeIndex: 0
 });
 
@@ -26,8 +28,17 @@ const onSwiper = (swiper: SwiperType): void => {
   swiperInstance.value = swiper;
 };
 
-const onSlideChange = (swiper: SwiperType): void => {
-  state.activeIndex = swiper.activeIndex;
+const onSlideChange = (): void => {
+  // console.log(
+  //   document
+  //     .querySelector(".swiper-slide-active")
+  //     ?.getAttribute("data-swiper-slide-index") ?? 0
+  // );
+  const swiperActiveItem = document.querySelector(".swiper-slide-active");
+  const realIndex: number = Number(
+    swiperActiveItem?.getAttribute("data-swiper-slide-index") ?? 0
+  );
+  state.activeIndex = realIndex;
 };
 
 const goToSlide = (index): void => {
