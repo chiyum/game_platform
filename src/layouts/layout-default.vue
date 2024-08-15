@@ -3,7 +3,9 @@ import Award from "@/components/home/award.vue";
 import { useGlobalStore } from "@/store/app-store";
 import { storeToRefs } from "pinia";
 import { useI18n } from "@/i18n";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const appStore = useGlobalStore();
 const { t } = useI18n();
 const { layoutLeaveAnimation, layoutDefaultMask } = storeToRefs(appStore);
@@ -133,7 +135,11 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
         <q-img class="piggy-bank" src="@/assets/images/home/piggy_bank.svg" />
       </div>
       <div class="layout-default-icon">
-        <q-img src="@/assets/images/home/buy.svg" class="buy"></q-img>
+        <q-img
+          src="@/assets/images/home/buy.svg"
+          class="buy"
+          @click="router.push('/shop')"
+        ></q-img>
       </div>
     </div>
     <div class="layout-default-main">

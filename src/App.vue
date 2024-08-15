@@ -103,7 +103,7 @@ watch(totalProgress, (value) => {
   appStore.setProgress(value);
   /** 載入完成前往登入頁面 */
   if (value === 100) {
-    router.push("/login");
+    router.replace("/login");
   }
 });
 
