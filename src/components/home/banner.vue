@@ -41,9 +41,10 @@ const onSlideChange = (): void => {
   state.activeIndex = realIndex;
 };
 
-const goToSlide = (index): void => {
+const goToSlide = (index: number): void => {
   if (swiperInstance.value) {
     swiperInstance.value.slideTo(index);
+    state.activeIndex = index;
   }
 };
 </script>
