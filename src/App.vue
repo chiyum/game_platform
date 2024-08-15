@@ -57,13 +57,15 @@ const imagesToPreload = [
   getImageUrl("default_background.png"), // background
   getImageUrl("downbar_bg.png.png"), // footer
   getImageUrl("topbar_bg.png"), // header
-  getImageUrl("home/award_bg.png"), // header
-  getImageUrl("home/award_1.png"), // header
-  getImageUrl("home/award_2.png"), // header
-  getImageUrl("home/award_3.png"), // header
+  getImageUrl("home/award_bg.png"), // footer
+  getImageUrl("home/award_1.png"), // footer
+  getImageUrl("home/award_2.png"), // footer
+  getImageUrl("home/award_3.png"), // footer
   // login
   getImageUrl("facebook_btn.png"), // header
-  getImageUrl("google_btn.png") // header
+  getImageUrl("google_btn.png"), // header
+  // loading
+  getImageUrl("Loading.png")
 ];
 const { progress: imageProgress } = useImagePreloader(imagesToPreload);
 const { addSource, updateProgress, totalProgress } = useMultiProgress();
