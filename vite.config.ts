@@ -65,7 +65,7 @@ export default defineConfig({
             type: "image/png"
           }
         ],
-        start_url: "/",
+        start_url: "/game_platform/",
         display: "standalone",
         background_color: "#ffffff"
       }
