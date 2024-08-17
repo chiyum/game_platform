@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import { fileURLToPath, URL } from "node:url";
 import eslint from "vite-plugin-eslint";
+import { VitePWA } from "vite-plugin-pwa";
 import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 
 // https://vitejs.dev/config/
@@ -46,7 +47,29 @@ export default defineConfig({
       }),
       apply: "serve",
       enforce: "post"
-    }
+    },
+    VitePWA({
+      registerType: "autoUpdate",
+      devOptions: {
+        enabled: true
+      },
+      manifest: {
+        name: "Casino",
+        short_name: "Casino",
+        description: "thie is a demo Casino Game",
+        theme_color: "#ffffff",
+        icons: [
+          {
+            src: "pwa_icon.png",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ],
+        start_url: "/",
+        display: "standalone",
+        background_color: "#ffffff"
+      }
+    })
   ],
   /** 快捷路徑設定 */
   resolve: {

@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/game_platform/dev-sw.js?dev-sw', { scope: '/game_platform/', type: 'classic' })
