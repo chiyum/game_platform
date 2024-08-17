@@ -73,7 +73,7 @@ init();
         <q-icon>
           <q-img src="@/assets/images/home/type_bar_icon.svg" alt="" />
         </q-icon>
-        <span>{{ t(`pages.home.all`) }}</span>
+        <span>{{ t(`pages.home.${state.selectType}`) }}</span>
       </div>
       <q-btn class="type-bar-select-arrow" @click="onShowOptions">
         <q-img
