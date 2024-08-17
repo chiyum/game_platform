@@ -9,6 +9,7 @@ defineOptions({
 });
 
 const { t } = useI18n();
+const router = useRouter();
 
 const animationDelay = 150;
 const animationDuration = 800;
@@ -58,6 +59,9 @@ init();
 /** 因為v-for搭配animation會造成卡頓 所以等待v-for載入完成才觸發動畫 */
 onMounted(() => {
   nextTick(() => {
+    setTimeout(() => {
+      // state.pageAnimationState = "enter";
+    }, 0);
     state.pageAnimationState = "enter";
   });
 });
@@ -76,6 +80,10 @@ onBeforeRouteLeave((to, from, next) => {
       <div class="shop-header-banner">
         <div class="shop-header-banner-left">
           <span>SHOP</span>
+          <span
+            class="shop-header-banner-left-back"
+            @click="router.back()"
+          ></span>
         </div>
         <div class="shop-header-banner-right"></div>
       </div>
