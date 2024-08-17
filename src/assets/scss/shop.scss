@@ -28,6 +28,7 @@
     position: sticky;
     top: 0; // position sticky 需要設定 top
     z-index: 1;
+
     &-banner {
       position: relative;
       display: grid;
@@ -218,6 +219,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+
     &-item {
       display: grid;
       grid-template-rows: 65% 35%;
@@ -306,6 +308,7 @@
 
         &-vip {
           margin-right: 0.15rem;
+
           .q-img {
             margin-top: 0.12rem;
             width: 0.5rem;
@@ -320,6 +323,44 @@
             margin-right: 0.05rem;
           }
         }
+      }
+      &-wrap {
+        transform: translate(-105%);
+        //animation: slideRight var(--animation-duration) forwards;
+        &-enters {
+          animation: slideRight var(--animate-duration) var(--animation-delay) forwards;
+        }
+        &-leaves {
+          transform: translate(0);
+          //animation: slideRightLeaves var(--animate-duration-leave) calc(var(--i) * 0.3)s forwards;
+          animation: slideRightLeaves var(--animate-duration-leave) var(--animation-duration-leave-delay) forwards;
+          //animation: slideRightLeaves var(--animation-duration) forwards;
+        }
+      }
+    }
+
+    @keyframes slideRight {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      80% {
+        opacity: 1;
+        transform: translateX(5%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideRightLeaves {
+      0% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-105%);
       }
     }
   }

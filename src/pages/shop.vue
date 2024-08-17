@@ -10,7 +10,13 @@ defineOptions({
 
 const { t } = useI18n();
 
+const animationDelay = 150;
+const animationDuration = 800;
+const animationLeaveDuration = 200;
+const animationTime = animationDelay + animationLeaveDuration;
+
 interface State {
+  pageAnimationState: string;
   amount: number;
   tip: string;
   level: number;
@@ -32,16 +38,36 @@ interface State {
 }
 
 const state: State = reactive({
+  pageAnimationState: "pending",
   amount: 450,
   tip: "",
   level: 2,
   shopList: FAKE_SHOP_LIST
 });
 
+const leaveDelay = (index, totalItems, baseDelay = 0.1) => {
+  return (totalItems - 1 - index) * baseDelay;
+};
+
 const init = (): void => {
   state.tip = t("pages.shop.vip.up.Level", { level: state.level });
 };
+
 init();
+
+/** 因為v-for搭配animation會造成卡頓 所以等待v-for載入完成才觸發動畫 */
+onMounted(() => {
+  nextTick(() => {
+    state.pageAnimationState = "enter";
+  });
+});
+
+onBeforeRouteLeave((to, from, next) => {
+  state.pageAnimationState = "leave";
+  setTimeout(() => {
+    next();
+  }, animationTime);
+});
 </script>
 
 <template>
@@ -73,9 +99,15 @@ init();
     <div class="shop-main">
       <GradientBorderBox
         height="1.8rem"
+        class="shop-main-item-wrap"
+        :class="{
+          'shop-main-item-wrap-enters': state.pageAnimationState === 'enter',
+          'shop-main-item-wrap-leaves': state.pageAnimationState === 'leave'
+        }"
         main-class="shop-main-item"
-        v-for="buyPlan in state.shopList"
+        v-for="(buyPlan, index) in state.shopList"
         :key="buyPlan.id"
+        :style="`--animation-delay:${index * animationDelay}ms; --animate-duration: ${animationDuration}ms;--animate-duration-leave: ${animationLeaveDuration}ms;--animation-duration-leave-delay: ${leaveDelay(index, state.shopList.length, 0.05)}s;`"
       >
         <div class="shop-main-item-top">
           <div class="shop-main-item-top-info">
