@@ -416,6 +416,8 @@ $select-width: 40%;
     }
 
     &-arrow {
+      border-radius: 2px 4px 4px 2px;
+      background: linear-gradient(180deg, rgba(201, 35, 255, 1) 0%, rgba(157, 31, 255, 1) 25%, rgba(62, 1, 146, 1) 75%, rgba(138, 52, 221, 1) 100%);
       .q-img {
         width: 0.3rem;
         height: 0.2rem;
@@ -430,9 +432,6 @@ $select-width: 40%;
       .q-img--down {
         transform: rotate(180deg);
       }
-
-      border-radius: 2px 4px 4px 2px;
-      background: linear-gradient(180deg, rgba(201, 35, 255, 1) 0%, rgba(157, 31, 255, 1) 25%, rgba(62, 1, 146, 1) 75%, rgba(138, 52, 221, 1) 100%);
     }
 
     &-options {
