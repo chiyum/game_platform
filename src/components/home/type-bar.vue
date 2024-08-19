@@ -71,7 +71,12 @@ init();
     <div class="type-bar-select">
       <div class="type-bar-select-selected">
         <q-icon>
-          <q-img src="@/assets/images/home/type_bar_icon.svg" alt="" />
+          <q-img
+            v-if="state.selectType === 'all'"
+            src="@/assets/images/home/type_bar_icon.svg"
+            alt=""
+          />
+          <q-img v-else src="@/assets/images/home/record.svg" alt="" />
         </q-icon>
         <span>{{ t(`pages.home.${state.selectType}`) }}</span>
       </div>
