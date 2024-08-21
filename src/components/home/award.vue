@@ -21,18 +21,18 @@ interface State {
 
 // 圖標數據
 const icons: Icon[] = [
-  { src: getImageUrl("home/award_1.png"), value: "1" },
-  { src: getImageUrl("home/award_2.png"), value: "2" },
-  { src: getImageUrl("home/award_3.png"), value: "3" },
-  { src: getImageUrl("home/award_1.png"), value: "1" },
-  { src: getImageUrl("home/award_2.png"), value: "2" },
-  { src: getImageUrl("home/award_3.png"), value: "3" },
-  { src: getImageUrl("home/award_1.png"), value: "1" },
-  { src: getImageUrl("home/award_2.png"), value: "2" },
-  { src: getImageUrl("home/award_3.png"), value: "3" },
-  { src: getImageUrl("home/award_1.png"), value: "1" },
-  { src: getImageUrl("home/award_2.png"), value: "2" },
-  { src: getImageUrl("home/award_3.png"), value: "3" }
+  { src: getImageUrl("home/award_1.svg"), value: "1" },
+  { src: getImageUrl("home/award_2.svg"), value: "2" },
+  { src: getImageUrl("home/award_3.svg"), value: "3" },
+  { src: getImageUrl("home/award_1.svg"), value: "1" },
+  { src: getImageUrl("home/award_2.svg"), value: "2" },
+  { src: getImageUrl("home/award_3.svg"), value: "3" },
+  { src: getImageUrl("home/award_1.svg"), value: "1" },
+  { src: getImageUrl("home/award_2.svg"), value: "2" },
+  { src: getImageUrl("home/award_3.svg"), value: "3" },
+  { src: getImageUrl("home/award_1.svg"), value: "1" },
+  { src: getImageUrl("home/award_2.svg"), value: "2" },
+  { src: getImageUrl("home/award_3.svg"), value: "3" }
 ];
 
 const currentRotation = ref(0);

@@ -27,70 +27,70 @@ export const FACK_GAME_LIST = [
 
 export const FACK_GAMELIST = [
   {
-    src: "img_game_01.png",
+    src: "img_game_01.svg",
     id: "1"
   },
   {
-    src: "img_game_02.png",
+    src: "img_game_02.svg",
     id: "2"
   },
   {
-    src: "img_game_03.png",
+    src: "img_game_03.svg",
     id: "3"
   },
   {
-    src: "img_game_04.png",
+    src: "img_game_04.svg",
     id: "4"
   },
   {
-    src: "img_game_01.png",
+    src: "img_game_01.svg",
     id: "5"
   },
   {
-    src: "img_game_02.png",
+    src: "img_game_02.svg",
     id: "6"
   },
   {
-    src: "img_game_03.png",
+    src: "img_game_03.svg",
     id: "7"
   },
   {
-    src: "img_game_04.png",
+    src: "img_game_04.svg",
     id: "8"
   }
 ];
 
 export const FACK_GAMELIST2 = [
   {
-    src: "img_game_04.png",
+    src: "img_game_04.svg",
     id: "1"
   },
   {
-    src: "img_game_01.png",
+    src: "img_game_01.svg",
     id: "2"
   },
   {
-    src: "img_game_02.png",
+    src: "img_game_02.svg",
     id: "3"
   },
   {
-    src: "img_game_03.png",
+    src: "img_game_03.svg",
     id: "4"
   },
   {
-    src: "img_game_01.png",
+    src: "img_game_01.svg",
     id: "5"
   },
   {
-    src: "img_game_04.png",
+    src: "img_game_04.svg",
     id: "6"
   },
   {
-    src: "img_game_02.png",
+    src: "img_game_02.svg",
     id: "7"
   },
   {
-    src: "img_game_03.png",
+    src: "img_game_03.svg",
     id: "8"
   }
 ];

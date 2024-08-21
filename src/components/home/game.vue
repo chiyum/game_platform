@@ -34,7 +34,7 @@ const setGameGroup = (ary: GameItem[]): GameItem[][] => {
 <template>
   <div class="game scrollable-content">
     <div class="game-recommend" v-if="gameType === 'all'">
-      <q-img src="@/assets/images/game/img_game_00.png"></q-img>
+      <q-img src="@/assets/images/game/img_game_00.svg"></q-img>
     </div>
     <div class="game-list">
       <div
