@@ -14,6 +14,10 @@ export const useGlobalStore = defineStore("useGlobalStore", () => {
   });
   const progress = ref<number>(0);
   const layoutDefaultMask = ref<boolean>(false);
+  const pwaState = ref({
+    show: false,
+    deferredPrompt: null
+  });
 
   function setLayoutLeaveAnimation(isLeave: boolean) {
     layoutLeaveAnimation.value.startLeave = isLeave;
@@ -27,13 +31,20 @@ export const useGlobalStore = defineStore("useGlobalStore", () => {
     layoutDefaultMask.value = value;
   }
 
+  function setPwaState(value: boolean, deferredPrompt: any) {
+    pwaState.value.show = value;
+    pwaState.value.deferredPrompt = deferredPrompt;
+  }
+
   return {
     lang,
+    pwaState,
     progress,
     layoutDefaultMask,
     layoutLeaveAnimation,
     setProgress,
     setLayoutDefaultMask,
+    setPwaState,
     setLayoutLeaveAnimation
   };
 });

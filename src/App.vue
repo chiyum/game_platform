@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { isNil, defaultTo, path } from "ramda";
 import { useImagePreloader } from "@/composable/imagePreload";
 import { useMultiProgress } from "@/composable/mutiProgressTracker";
+import { isNil, defaultTo, path } from "ramda";
 import { getImageUrl } from "@/utils/getImageUrl";
 import { useGlobalStore } from "@/store/app-store";
 import { DefaultImageLoader } from "@/utils/class";
+import storage from "store2";
 
 const route = useRoute();
 const router = useRouter();
 const appStore = useGlobalStore();
+const deferredPrompt = ref(null);
 
 const layout = computed(() => {
   /* 一開始都是 undefined */
@@ -45,6 +47,7 @@ const setVh = () => {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 };
+
 const imagesToPreload = [
   getImageUrl("home/gift_icon.svg"), // footer-icon
   getImageUrl("home/slot_btn.svg"), // footer-icon
@@ -67,18 +70,38 @@ const imagesToPreload = [
   getImageUrl("google_btn.png") // header
   // loading
 ];
+
 const { totalProgress: imageProgress } = useImagePreloader(
   imagesToPreload,
   () => {
     console.log("imageProgress 圖片加載完成", imageProgress.value);
   }
 );
+
 const { addSource, updateProgress, totalProgress } = useMultiProgress();
+
 // 添加圖片預加載進度源
 addSource("imagePreloader", 1);
-
 // 添加另一個進度源
 addSource("pendingProgress", 1);
+
+const initializePwaInstallListeners = () => {
+  // 已經有安裝過pwa會載加載此事件
+  window.addEventListener("appinstalled", () => {
+    deferredPrompt.value = null;
+    console.log("PWA was installed");
+  });
+
+  // 尚未安裝pwa並且使用者裝置可以安裝時載加載此事件 此時顯示彈窗提示使用者是否要安裝
+  window.addEventListener("beforeinstallprompt", (e) => {
+    const isInstallPrompt = storage.get("installPrompt");
+    if (isInstallPrompt) return;
+    e.preventDefault();
+    storage.set("installPrompt", true);
+    deferredPrompt.value = e;
+    appStore.setPwaState(true, e);
+  });
+};
 
 const init = async () => {
   /** 優先載入Loading背景圖片 */
@@ -87,6 +110,10 @@ const init = async () => {
 };
 
 init();
+
+onMounted(() => {
+  initializePwaInstallListeners();
+});
 
 /** 為了進度條可以讓使用者看到正常跑動，而不是載入太快一下就跳轉顯得太突兀，加入了pending功能 */
 watch(imageProgress, (value) => {

@@ -1,16 +1,56 @@
 <script setup lang="ts">
 import { useGlobalStore } from "@/store/app-store";
+import { storeToRefs } from "pinia";
+import { useQuasar } from "quasar";
 import TypeBar from "@/components/home/type-bar.vue";
 import Game from "@/components/home/game.vue";
 import Banner from "@/components/home/banner.vue";
+import PwaDialog from "@/components/layout/pwa-dialog.vue";
 
 defineOptions({
   layout: "layout-default"
 });
 
-// const { t } = useI18n();
+const $q = useQuasar();
 const appStore = useGlobalStore();
-// const router = useRouter();
+const { pwaState } = storeToRefs(appStore);
+
+const installPWA = () => {
+  if (pwaState.value.deferredPrompt) {
+    pwaState.value.deferredPrompt.prompt();
+    pwaState.value.deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the install prompt");
+      } else {
+        console.log("User dismissed the install prompt");
+      }
+      appStore.setPwaState(false, null);
+    });
+  }
+};
+
+const onShowPwaDialog = () => {
+  console.log("onShowPwaDialog");
+  $q.dialog({
+    component: PwaDialog
+  })
+    .onOk(() => {
+      installPWA();
+      console.log("OK");
+    })
+    .onCancel(() => {
+      console.log("Cancel");
+    })
+    .onDismiss(() => {
+      console.log("Called on OK or Cancel");
+    });
+};
+
+onMounted(() => {
+  if (pwaState.value.show) {
+    onShowPwaDialog();
+  }
+});
 
 onBeforeRouteLeave((to, from, next) => {
   const animationTime = 200;
