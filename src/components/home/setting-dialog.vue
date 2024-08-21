@@ -49,11 +49,21 @@ const onToggleLang = (lang: string) => {
   state.currentLang = lang;
   locale.value = lang === "zh" ? "zh-tw" : "en";
 };
+
+const onHideSettingDialog = () => {
+  isShowSettingDialog.value = false;
+};
 </script>
 
 <template>
-  <q-dialog v-model="isShowSettingDialog">
+  <q-dialog v-model="isShowSettingDialog" @hide="onHideSettingDialog">
     <div class="setting-dialog">
+      <div class="setting-dialog-close-btn">
+        <q-img
+          src="@/assets/images/home/shop_cancel_btn.svg"
+          @click="onHideSettingDialog"
+        />
+      </div>
       <div class="setting-dialog-tab">
         <div
           class="setting-dialog-tab-item"

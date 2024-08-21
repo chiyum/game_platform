@@ -4,6 +4,7 @@ import { useGlobalStore } from "@/store/app-store";
 import { storeToRefs } from "pinia";
 import { useI18n } from "@/i18n";
 import { useRouter } from "vue-router";
+import SettingDialog from "@/components/home/setting-dialog.vue";
 
 const router = useRouter();
 const appStore = useGlobalStore();
@@ -18,6 +19,7 @@ interface State {
   gem: number;
   isOpenAward: boolean;
   isLockClickOutside: boolean;
+  isShowSettingDialog: boolean;
 }
 
 const state: State = reactive({
@@ -27,7 +29,8 @@ const state: State = reactive({
   withoutLevel: 1000,
   gem: 1000,
   isOpenAward: false,
-  isLockClickOutside: false
+  isLockClickOutside: false,
+  isShowSettingDialog: false
 });
 
 const onToggleAward = (): void => {
@@ -54,6 +57,10 @@ const onCloseAward = (): void => {
   appStore.setLayoutDefaultMask(false);
 };
 
+const onOpenSettingDialog = (): void => {
+  state.isShowSettingDialog = true;
+};
+
 const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
 </script>
 
@@ -63,7 +70,7 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
       class="layout-default-header"
       :class="['animated-header', { 'animated-header--leave': isAnimation }]"
     >
-      <q-avatar size="1rem">
+      <q-avatar size="1rem" @click="onOpenSettingDialog">
         <q-img src="@/assets/images/home/profile_img.png" />
       </q-avatar>
       <div class="layout-default-header-data">
@@ -174,6 +181,7 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
       </div>
     </div>
     <Award v-click-outsize="onCloseAward" v-if="state.isOpenAward" />
+    <SettingDialog v-model="state.isShowSettingDialog" />
     <div class="layout-default-bg"></div>
     <transition>
       <div class="mask" v-if="layoutDefaultMask"></div>

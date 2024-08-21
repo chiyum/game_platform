@@ -1,9 +1,25 @@
 .setting-dialog {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 95%;
-  min-height: 70%;
-  overflow: scroll;
+  height: 70%;
+  overflow: visible;
+
+  &-close-btn {
+    position: absolute;
+    top: -11%;
+    right: 0;
+    width: 0.9rem;
+    height: 0.9rem;
+    z-index: 100;
+    // 當寬度大於500而且高度在600以下時
+    @media (min-width: 500px) and (max-height: 780px)  {
+      top: -15%;
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
 
   &-tab {
     display: grid;
@@ -98,6 +114,8 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(51, 1, 127, 1) 1.6%, rgba(107, 0, 179, 1) 100%);
     //background: linear-gradient(180deg, rgba(51,1,127,1) 0%, rgba(107,0,179,1) 100%);
     border-radius: 0 0 20px 20px;
+    overflow-y: scroll;
+
 
     &::before {
       content: "";
@@ -167,6 +185,7 @@
           align-items: center;
           justify-content: center;
           gap: 0.3rem;
+
           & > div {
             display: flex;
             flex-direction: column;
@@ -179,6 +198,7 @@
             background-image: url("@/assets/images/home/help-icon.png");
             background-size: 100%;
             background-repeat: no-repeat;
+
             .q-img {
               width: 0.35rem;
               height: 0.5rem;

@@ -3,19 +3,11 @@ import { useGlobalStore } from "@/store/app-store";
 import TypeBar from "@/components/home/type-bar.vue";
 import Game from "@/components/home/game.vue";
 import Banner from "@/components/home/banner.vue";
-import SettingDialog from "@/components/home/setting-dialog.vue";
 
 defineOptions({
   layout: "layout-default"
 });
 
-interface State {
-  isShowSettingDialog: boolean;
-}
-
-const state: State = reactive({
-  isShowSettingDialog: true
-});
 // const { t } = useI18n();
 const appStore = useGlobalStore();
 // const router = useRouter();
@@ -35,7 +27,6 @@ onBeforeRouteLeave((to, from, next) => {
     <TypeBar />
     <Game />
     <Banner />
-    <SettingDialog v-model="state.isShowSettingDialog" />
   </div>
 </template>
 
