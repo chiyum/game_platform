@@ -28,9 +28,10 @@
   &-tab {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
+    align-items: flex-end;
+    $item-height: 1.05rem;
     &-item {
-      $item-height: 1.05rem;
+
       position: relative;
       display: flex;
       align-items: center;
@@ -39,18 +40,40 @@
       color: #9C78F4;
       font-size: 0.35rem;
       font-weight: bold;
-      background: linear-gradient(0deg, rgba(55, 31, 107, 1) 0%, rgba(46, 3, 101, 1) 50%, rgba(34, 0, 94, 1) 100%);
+      //border-top: 1px solid #5C32A4;
+      background: linear-gradient(0deg, rgba(55, 31, 107, 1) 0%, rgba(46, 3, 101, 1) 35%, rgba(34, 0, 94, 1) 100%);
       $tab-border-radius: 20px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: #5C32A4;
+        z-index: -1;
+      }
 
       &:nth-child(1) {
         border-radius: $tab-border-radius 0 0 0;
+        &:after {
+          top: -1px;
+          border-radius: $tab-border-radius 0 0 0;
+        }
       }
 
       &:nth-child(2) {
         border-radius: 0 $tab-border-radius 0 0;
+        &:after {
+          top: -1px;
+          border-radius: 0 $tab-border-radius 0 0;
+        }
       }
 
       &--active-setting {
+        height: calc($item-height + 1px);
         color: #FFFFFF;
         background: linear-gradient(180deg, rgba(142, 112, 255, 1) 0%, rgba(116, 57, 246, 1) 30%, rgba(115, 34, 215, 1) 70%, rgba(115, 34, 215, 1) 100%);
 
@@ -62,7 +85,7 @@
           width: 100%;
           height: 100%;
           background-image: url("@/assets/images/home/setting-tab-active-background2.png");
-          background-size: 100% $item-height;
+          background-size: 100% calc($item-height + 1px);
           background-repeat: no-repeat;
         }
 
@@ -78,6 +101,7 @@
       }
 
       &--active-account {
+        height: calc($item-height + 1px);
         color: #FFFFFF;
         background: linear-gradient(180deg, rgba(142, 112, 255, 1) 0%, rgba(116, 57, 246, 1) 30%, rgba(115, 34, 215, 1) 70%, rgba(115, 34, 215, 1) 100%);
 
