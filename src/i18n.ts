@@ -41,6 +41,7 @@ export const useI18n = () => {
   // 後續可以增加自定義設定
   const format = {
     t: i18n.t,
+    setLang: i18n.setLocale,
     ...i18n
   };
   return format;
