@@ -56,7 +56,11 @@ const onHideSettingDialog = () => {
 </script>
 
 <template>
-  <q-dialog v-model="isShowSettingDialog" @hide="onHideSettingDialog">
+  <q-dialog
+    class="setting-dialog-wrap"
+    v-model="isShowSettingDialog"
+    @hide="onHideSettingDialog"
+  >
     <div class="setting-dialog">
       <div class="setting-dialog-close-btn">
         <q-img

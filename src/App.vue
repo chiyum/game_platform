@@ -94,10 +94,9 @@ const initializePwaInstallListeners = () => {
 
   // 尚未安裝pwa並且使用者裝置可以安裝時載加載此事件 此時顯示彈窗提示使用者是否要安裝
   window.addEventListener("beforeinstallprompt", (e) => {
-    const isInstallPrompt = storage.get("installPrompt");
+    const isInstallPrompt = storage.get("installPwa");
     if (isInstallPrompt) return;
     e.preventDefault();
-    storage.set("installPrompt", true);
     deferredPrompt.value = e;
     appStore.setPwaState(true, e);
   });

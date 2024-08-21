@@ -95,3 +95,10 @@ body {
 //    opacity: 0;
 //  }
 //}
+
+// 因為子元件使用deep吃不到，所以改在全局
+.setting-dialog-wrap {
+  .q-dialog__backdrop {
+    background: rgba(#000000, 0.75); /* 遮罩 */
+  }
+}
