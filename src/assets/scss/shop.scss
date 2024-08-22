@@ -226,7 +226,7 @@
   }
 
   &-main {
-    padding: 0.25rem 0.2rem;
+    padding: 0.25rem 0.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -240,7 +240,7 @@
         align-items: center;
         justify-content: space-between;
         padding-left: 0.3rem;
-        padding-right: 0.4rem;
+        padding-right: 0.3rem;
 
         .q-img {
           margin-top: 0.2rem;
@@ -277,9 +277,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-bottom: 0.05rem;
-            width: 2rem;
-            height: 0.85rem;
+            //padding-bottom: 0.05rem;
+            //width: 2rem;
+            //height: 0.85rem;
+            padding-bottom: 0.15rem;
+            width: 2.05rem;
+            height: 0.9rem;
             font-size: 0.38rem;
             font-weight: bolder;
             color: white; /* 設置文字顏色 */
@@ -288,14 +291,16 @@
             -1px 1px 0 #09810E, /* 左下陰影 */
             1px 1px 0 #09810E; /* 右下陰影 */
             background-image: url("@/assets/images/shop/shop_btn.png");
-            background-size: 100%;
+            //background-size: 2rem 0.85rem;
+            background-size: 2.05rem 0.9rem;
             background-repeat: no-repeat;
+            transform: translateX(-0.05rem);
           }
         }
       }
 
       &-bottom {
-        width: 7.05rem;
+        //width: 7.05rem;
         display: flex;
         align-items: center;
         gap: 0.2rem;
