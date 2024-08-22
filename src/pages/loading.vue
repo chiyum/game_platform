@@ -10,7 +10,6 @@ defineOptions({
 const appStore = useGlobalStore();
 const { progress: totalProgress } = storeToRefs(appStore);
 const { t } = useI18n();
-
 </script>
 
 <template>
@@ -19,7 +18,10 @@ const { t } = useI18n();
       <span class="loading-bar-text">
         {{ t("global.loading") }}
       </span>
-      <div class="loading-bar-progress" :style="{ width: `${totalProgress}%` }">
+      <div
+        class="loading-bar-progress"
+        :style="{ width: `${Math.max(totalProgress, 5)}%` }"
+      >
         <!--        <count-up :end-val="progress"></count-up>-->
       </div>
     </div>
