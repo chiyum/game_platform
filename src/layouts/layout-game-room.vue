@@ -2,6 +2,12 @@
 
 <template>
   <div class="layout-game-room">
+    <div class="layout-game-room-header">
+      <div class="layout-game-room-header-right-btn">
+        <span>2x</span>
+        <span>SALE</span>
+      </div>
+    </div>
     <slot />
   </div>
 </template>
