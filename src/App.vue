@@ -59,7 +59,7 @@ const imagesToPreload = [
   getImageUrl("home/buy.svg"), // footer-icon
   getImageUrl("home/piggy_bank.svg"), // footer-icon
   getImageUrl("default_background.png"), // background
-  getImageUrl("downbar_bg.png.png"), // footer
+  getImageUrl("downbar_bg.png"), // footer
   getImageUrl("topbar_bg.png"), // header
   getImageUrl("home/award_bg.png"), // footer
   getImageUrl("home/award_1.png"), // footer

@@ -4,6 +4,8 @@ import { storeToRefs } from "pinia";
 import { GameItem } from "@/models/game";
 import getImageUrl from "@/utils/getImageUrl";
 
+const router = useRouter();
+
 interface State {
   gameList: GameItem[][];
 }
@@ -29,12 +31,19 @@ const setGameGroup = (ary: GameItem[]): GameItem[][] => {
     return result;
   }, []);
 };
+
+const onForwardGame = () => {
+  router.push("/game-room");
+};
 </script>
 
 <template>
   <div class="game scrollable-content">
     <div class="game-recommend" v-if="gameType === 'all'">
-      <q-img src="@/assets/images/game/img_game_00.svg"></q-img>
+      <q-img
+        src="@/assets/images/game/img_game_00.svg"
+        @click="onForwardGame"
+      />
     </div>
     <div class="game-list">
       <div
