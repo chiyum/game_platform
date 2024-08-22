@@ -301,6 +301,7 @@
         padding: 0 0.3rem;
         border-radius: 0 0 12px 12px;
         background: radial-gradient(circle, rgba(50, 20, 89, 1) 0%, rgba(76, 16, 130, 1) 100%);
+        overflow: hidden;
 
         &-tip {
           color: #A566F4;
