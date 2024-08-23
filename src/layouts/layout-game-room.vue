@@ -3,6 +3,7 @@ import gradientBtn from "@/components/gradient-btn.vue";
 import { useI18n } from "@/i18n";
 import { useGlobalStore } from "@/store/app-store";
 import { storeToRefs } from "pinia";
+import coinAudio from "@/assets/audio/coin_001.mp3";
 
 interface State {
   amount: number;
@@ -110,10 +111,12 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
             <q-img
               src="@/assets/images/gameRoom/btn_negative.svg"
               @click="onNegativeBet"
+              v-audio-play="coinAudio"
             />
             <q-img
               src="@/assets/images/gameRoom/btn_add.svg"
               @click="onAddBet"
+              v-audio-play="coinAudio"
             />
           </div>
         </div>
@@ -121,7 +124,11 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
           <q-img src="@/assets/images/gameRoom/btn_start.svg" />
         </div>
         <div class="layout-game-room-footer-bottom-btn-max">
-          <q-img src="@/assets/images/gameRoom/btn_max.svg" @click="onMexBet" />
+          <q-img
+            src="@/assets/images/gameRoom/btn_max.svg"
+            @click="onMexBet"
+            v-audio-play="coinAudio"
+          />
         </div>
         <div class="layout-game-room-footer-bottom-gift">
           <q-img src="@/assets/images/gameRoom/gift.svg" />

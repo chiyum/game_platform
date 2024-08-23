@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { defineModel } from "vue";
 const isSwitchOn = defineModel({ type: Boolean, default: false });
-defineProps({
+const emit = defineEmits(["toggle"]);
+const props = defineProps({
   onText: {
     type: String,
     default: "On"
@@ -9,12 +10,25 @@ defineProps({
   offText: {
     type: String,
     default: "Off"
+  },
+  id: {
+    type: String,
+    default: ""
   }
 });
 
 const onToggle = () => {
-  console.log("onToggle");
   isSwitchOn.value = !isSwitchOn.value;
+  nextTick(() => {
+    emit("toggle", {
+      isSwitchOn: isSwitchOn.value,
+      id: props.id
+    });
+  });
+  // emit("toggle", {
+  //   isSwitchOn: isSwitchOn.value,
+  //   id: props.id
+  // });
 };
 </script>
 

@@ -153,7 +153,7 @@ const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
       <slot />
     </div>
     <div
-      class="layout-default-footer"
+      class="layout-default-footer no-select"
       :class="['animated-footer', { 'animated-footer--leave': isAnimation }]"
     >
       <div class="layout-default-footer-item">

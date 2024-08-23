@@ -78,7 +78,7 @@ init();
           />
           <q-img v-else src="@/assets/images/home/record.svg" alt="" />
         </q-icon>
-        <span>{{ t(`pages.home.${state.selectType}`) }}</span>
+        <span class="no-select">{{ t(`pages.home.${state.selectType}`) }}</span>
       </div>
       <q-btn class="type-bar-select-arrow" @click="onShowOptions">
         <q-img
@@ -91,6 +91,7 @@ init();
             <q-item
               v-for="option in state.options"
               :key="option.value"
+              class="no-select"
               :class="{ 'q-item--active': state.selectType === option.value }"
               @click="changeSelectType(option.value)"
               clickable

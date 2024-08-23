@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import toggle from "@/components/toggle.vue";
 import { defineModel } from "vue";
+import { useGlobalStore } from "@/store/app-store";
+import { storeToRefs } from "pinia";
 import { useI18n } from "@/i18n";
 const { t, locale } = useI18n();
 const isShowSettingDialog = defineModel({ type: Boolean, default: false });
+const store = useGlobalStore();
+const { systemConfig } = storeToRefs(store);
 interface State {
   selectTab: string;
   currentLang: string;
@@ -11,13 +15,14 @@ interface State {
   betToggleSetting: { name: string; value: boolean }[];
   userId: number;
 }
+
 const state: State = reactive({
   selectTab: "setting",
   currentLang: locale.value === "zh-tw" ? "en" : "zh",
   toggleSetting: [
     {
       name: "audio", // 對應的是語言包的 key
-      value: true
+      value: systemConfig.value.openAudio
     },
     {
       name: "music",
@@ -52,6 +57,23 @@ const onToggleLang = (lang: string) => {
 
 const onHideSettingDialog = () => {
   isShowSettingDialog.value = false;
+};
+
+const onToggle = ({ id, isSwitchOn }) => {
+  console.log(id, isSwitchOn);
+  switch (id) {
+    case "audio":
+      store.setSystemConfig("openAudio", isSwitchOn);
+      break;
+    case "music":
+      break;
+    case "push":
+      break;
+    case "auto.bet":
+      break;
+    case "auto.bet.max.amount":
+      break;
+  }
 };
 </script>
 
@@ -112,6 +134,7 @@ const onHideSettingDialog = () => {
             </div>
             <div class="setting-dialog-main-item-right">
               <toggle
+                :id="item.name"
                 v-model="item.value"
                 :on-text="
                   t('pages.home.setting.dialog.system.setting.switch.on')
@@ -119,6 +142,7 @@ const onHideSettingDialog = () => {
                 :off-text="
                   t('pages.home.setting.dialog.system.setting.switch.off')
                 "
+                @toggle="onToggle"
               ></toggle>
             </div>
           </div>
