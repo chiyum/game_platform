@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SwiperDetection from "@/components/swiperDetection.vue";
 import { defineExpose } from "vue";
 import { useI18n } from "@/i18n";
 import { getRemInPixels } from "@/utils/getRemInpixels";
@@ -81,6 +82,20 @@ const getIconStyle = (index: number): any => {
   };
 };
 
+const onSwiper = (res) => {
+  console.log(res);
+};
+
+const onSwiperLeftEvent = () => {
+  console.log("left");
+  rotateRight();
+};
+
+const onSwiperRightEvent = () => {
+  console.log("right");
+  rotateLeft();
+};
+
 // 向左旋轉的函數
 const rotateLeft = () => {
   currentRotation.value =
@@ -104,30 +119,38 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="award">
-    <div class="award-header">
-      <span class="award-header-left-arrow" @click="rotateRight"></span>
-      {{ t("pages.home.award.take") }}
-      <span class="award-header-right-arrow" @click="rotateLeft"></span>
-    </div>
-    <div class="award-main">
-      <div class="container">
-        <!--        &lt;!&ndash; 中心圖標 &ndash;&gt;-->
-        <!--        <div class="center" :style="centerStyle">-->
-        <!--          <i class="fa fa-plus"></i>-->
-        <!--        </div>-->
-        <!-- 環繞的圖標 -->
-        <div
-          v-for="(icon, index) in icons"
-          :key="index"
-          class="orbiting-icon"
-          :style="getIconStyle(index)"
-        >
-          <q-img :src="icon.src"></q-img>
+  <swiper-detection
+    @swipe-left="onSwiperLeftEvent"
+    @swipe-right="onSwiperRightEvent"
+    @swipe-move="onSwiper"
+    :use-percentage="true"
+    min-swipe-distance="20"
+  >
+    <div class="award">
+      <div class="award-header">
+        <span class="award-header-left-arrow" @click="rotateRight"></span>
+        {{ t("pages.home.award.take") }}
+        <span class="award-header-right-arrow" @click="rotateLeft"></span>
+      </div>
+      <div class="award-main">
+        <div class="container">
+          <!--        &lt;!&ndash; 中心圖標 &ndash;&gt;-->
+          <!--        <div class="center" :style="centerStyle">-->
+          <!--          <i class="fa fa-plus"></i>-->
+          <!--        </div>-->
+          <!-- 環繞的圖標 -->
+          <div
+            v-for="(icon, index) in icons"
+            :key="index"
+            class="orbiting-icon"
+            :style="getIconStyle(index)"
+          >
+            <q-img :src="icon.src"></q-img>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </swiper-detection>
 </template>
 
 <style scoped lang="scss">
