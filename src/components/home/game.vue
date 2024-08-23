@@ -33,7 +33,7 @@ const setGameGroup = (ary: GameItem[]): GameItem[][] => {
 };
 
 const onForwardGame = () => {
-  if (gameType.value === "all") return;
+  // if (gameType.value === "all") return;
   router.push("/game-room");
 };
 </script>

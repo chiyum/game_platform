@@ -137,7 +137,7 @@ onBeforeRouteLeave((to, from, next) => {
           <div class="shop-main-item-bottom-tip">{{ t("pages.shop.tip") }}</div>
           <div class="shop-main-item-bottom-vip">
             <q-img src="@/assets/images/shop/shop_vip.svg"></q-img>
-            <span>{{ buyPlan.gemPoint }}</span>
+            <span>{{ buyPlan.vipPoint }}</span>
           </div>
           <div class="shop-main-item-bottom-gem">
             <q-img src="@/assets/images/home/gem.svg"></q-img>
