@@ -3,9 +3,10 @@
   height: 100%;
   width: 100%;
   background: linear-gradient(180deg, rgba(89, 17, 146, 1) 0%, rgba(13, 24, 84, 1) 100%);
-
+  overflow-y: scroll;
   &-header {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -15,6 +16,7 @@
     background-image: url("@/assets/images/gameRoom/img_bar_left.svg");
     background-size: 6.4rem 110%;
     background-repeat: no-repeat;
+    z-index: 11;
 
     &-right-btn {
       position: absolute;
@@ -376,4 +378,78 @@
 .btn--active {
   transform: scale(0.98); /* 按壓時縮小按鈕 */
   filter: brightness(0.9); /* 調整亮度，模擬按壓陰影 */
+}
+
+
+/* header init 動畫 */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(5%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*  header leave 動畫 */
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* 應用到 header 的動畫 */
+.animated-header {
+  animation: slideDown 0.5s ease-out forwards;
+
+  &--leave {
+    animation: slideUp 0.1s ease-out forwards;
+  }
+}
+
+/* footer init 動畫 */
+@keyframes slideDownFooter {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(-5%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*  footer leave 動畫 */
+@keyframes slideUpFooter {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animated-footer {
+  animation: slideDownFooter 0.5s ease-out forwards;
+
+  &--leave {
+    animation: slideUpFooter 0.1s ease-out forwards;
+  }
 }

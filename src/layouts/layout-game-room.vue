@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import gradientBtn from "@/components/gradient-btn.vue";
 import { useI18n } from "@/i18n";
+import { useGlobalStore } from "@/store/app-store";
+import { storeToRefs } from "pinia";
 
 interface State {
   amount: number;
@@ -10,6 +12,9 @@ interface State {
 }
 
 const { t } = useI18n();
+const router = useRouter();
+const appStore = useGlobalStore();
+const { layoutLeaveAnimation } = storeToRefs(appStore);
 
 const state: State = reactive({
   amount: 23500,
@@ -31,12 +36,21 @@ const onNegativeBet = () => {
 const onMexBet = () => {
   state.totalBetAmount = state.amount;
 };
+
+const onBack = () => {
+  router.back();
+};
+
+const isAnimation = computed(() => layoutLeaveAnimation.value.startLeave);
 </script>
 
 <template>
   <div class="layout-game-room">
-    <div class="layout-game-room-header">
-      <div class="layout-game-room-header-menu-btn">
+    <div
+      class="layout-game-room-header"
+      :class="['animated-header', { 'animated-header--leave': isAnimation }]"
+    >
+      <div class="layout-game-room-header-menu-btn" @click="onBack">
         <span></span>
         <span></span>
         <span></span>
@@ -61,7 +75,10 @@ const onMexBet = () => {
     <div class="layout-game-room-main">
       <slot />
     </div>
-    <div class="layout-game-room-footer">
+    <div
+      class="layout-game-room-footer"
+      :class="['animated-footer', { 'animated-footer--leave': isAnimation }]"
+    >
       <div class="layout-game-room-footer-top">
         <span class="layout-game-room-footer-top-amount">
           {{ new Intl.NumberFormat().format(state.betAmount) }}

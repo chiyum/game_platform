@@ -52,7 +52,12 @@ const onForwardGame = () => {
         v-for="(games, index) in state.gameList"
         :key="`game-${index}`"
       >
-        <div class="normal-game" v-for="game in games" :key="game.id">
+        <div
+          class="normal-game"
+          v-for="game in games"
+          :key="game.id"
+          @click="onForwardGame"
+        >
           <q-img :src="getImageUrl(`game/${game.src}`)"></q-img>
         </div>
       </div>
