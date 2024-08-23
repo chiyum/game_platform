@@ -59,7 +59,7 @@ export const FAKE_SHOP_LIST = [
     id: 5,
     buyPrice: 1490,
     point: 1000000,
-    discountPoint: 1120000001,
+    discountPoint: 112000001,
     img: getImageUrl("shop/shop_money_5.svg"),
     imgSize: {
       height: "1rem",
