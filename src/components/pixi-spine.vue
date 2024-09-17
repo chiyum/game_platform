@@ -1,5 +1,5 @@
 <template>
-  <div ref="pixiContainer"></div>
+  <div ref="pixiContainer" class="pixi-container"></div>
 </template>
 
 <script setup lang="ts">
@@ -15,8 +15,11 @@ onMounted(async () => {
 
   // 創建 PIXI Application
   const app = new PIXI.Application({
-    width: 800,
-    height: 600
+    resizeTo: pixiContainer.value, // Automatically resize to the container
+    autoDensity: true, // Adjust for device pixel ratio
+    resolution: window.devicePixelRatio || 1,
+    backgroundColor: 0x000000, // 設置背景顏色
+    backgroundAlpha: 0 // 設置背景完全透明
   });
 
   // 將 PIXI canvas 添加到 DOM
@@ -25,9 +28,9 @@ onMounted(async () => {
   try {
     // 加載資源
     await Assets.load([
-      { alias: "spineData", src: "src/assets/animation/01.json" },
-      { alias: "spineAtlas", src: "src/assets/animation/01.atlas" },
-      { alias: "spineImage", src: "src/assets/animation/01.png" }
+      { alias: "spineData", src: "src/assets/animation/02.json" },
+      { alias: "spineAtlas", src: "src/assets/animation/02.atlas" },
+      { alias: "spineImage", src: "src/assets/animation/02.webp" }
     ]);
 
     // 獲取加載的資源
@@ -35,13 +38,13 @@ onMounted(async () => {
 
     // 創建 Spine 實例
     const animation = new Spine(spineData.spineData);
-
+    animation.state.timeScale = 0.7; // 根据需要调整此值
     // 設置動畫位置
     animation.x = app.screen.width / 2;
-    animation.y = app.screen.height;
+    animation.y = app.screen.height / 1.5;
 
     // 設置動畫比例
-    animation.scale.set(0.5);
+    animation.scale.set(0.15);
 
     // 添加動畫到舞台
     app.stage.addChild(animation);
@@ -63,3 +66,11 @@ onMounted(async () => {
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.pixi-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+</style>

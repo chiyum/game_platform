@@ -363,6 +363,21 @@
   }
 }
 
+.game-room-animation {
+  &-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-size: 100%;
+    background-image: url("@/assets/images/game_bg.jpg");
+    &-content {
+      width: 80%;
+      height: 80%;
+    }
+  }
+}
+
 :deep(.layout-game-room-footer-bottom-bet-action-integral-main) {
   font-size: 0.3rem;
   color: #FFFFFF;
