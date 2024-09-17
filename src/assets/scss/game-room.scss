@@ -364,6 +364,8 @@
 }
 
 .game-room-animation {
+  display: flex;
+  flex-direction: column;
   &-main {
     display: flex;
     align-items: center;
@@ -371,10 +373,11 @@
     height: 4rem;
     background-size: 100%;
     background-image: url("@/assets/images/game_bg.jpg");
-    &-content {
-      width: 80%;
-      height: 80%;
-    }
+  }
+  &-action {
+    height: 10rem;
+    background-size: 100%;
+    background-image: url("@/assets/images/game/action-cutout.png");
   }
 }
 

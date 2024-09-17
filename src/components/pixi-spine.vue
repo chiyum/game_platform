@@ -38,7 +38,7 @@ onMounted(async () => {
 
     // 創建 Spine 實例
     const animation = new Spine(spineData.spineData);
-    animation.state.timeScale = 0.7; // 根据需要调整此值
+    animation.state.timeScale = 1; // 根据需要调整此值
     // 設置動畫位置
     animation.x = app.screen.width / 2;
     animation.y = app.screen.height / 1.5;
