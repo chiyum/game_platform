@@ -71,6 +71,7 @@ export default defineConfig({
       }
     })
   ],
+  assetsInclude: ["**/*.atlas"],
   /** 快捷路徑設定 */
   resolve: {
     alias: {

@@ -32,8 +32,13 @@ const setGameGroup = (ary: GameItem[]): GameItem[][] => {
   }, []);
 };
 
-const onForwardGame = () => {
+const onForwardGame = (id) => {
   // if (gameType.value === "all") return;
+  console.log(typeof id);
+  if (id === "8") {
+    router.push("/game-room-animation");
+    return;
+  }
   router.push("/game-room");
 };
 </script>
@@ -56,7 +61,7 @@ const onForwardGame = () => {
           class="normal-game"
           v-for="game in games"
           :key="game.id"
-          @click="onForwardGame"
+          @click="onForwardGame(game.id)"
         >
           <q-img :src="getImageUrl(`game/${game.src}`)"></q-img>
         </div>
