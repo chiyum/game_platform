@@ -7,6 +7,7 @@ import { ref, onMounted } from "vue";
 import * as PIXI from "pixi.js";
 import { Spine } from "pixi-spine";
 import { Assets } from "pixi.js";
+import pixiAtlas from "@/assets/animation/02.atlas";
 
 const pixiContainer = ref<HTMLDivElement | null>(null);
 
@@ -38,7 +39,7 @@ onMounted(async () => {
       },
       {
         alias: "spineImage",
-        src: new URL("../assets/animation/02.webp", import.meta.url).href
+        src: pixiAtlas
       }
     ]);
 
