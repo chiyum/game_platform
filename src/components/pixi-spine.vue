@@ -28,9 +28,18 @@ onMounted(async () => {
   try {
     // 加載資源
     await Assets.load([
-      { alias: "spineData", src: "src/assets/animation/02.json" },
-      { alias: "spineAtlas", src: "src/assets/animation/02.atlas" },
-      { alias: "spineImage", src: "src/assets/animation/02.webp" }
+      {
+        alias: "spineData",
+        src: new URL("../assets/animation/02.json", import.meta.url).href
+      },
+      {
+        alias: "spineAtlas",
+        src: new URL("../assets/animation/02.atlas", import.meta.url).href
+      },
+      {
+        alias: "spineImage",
+        src: new URL("../assets/animation/02.webp", import.meta.url).href
+      }
     ]);
 
     // 獲取加載的資源
