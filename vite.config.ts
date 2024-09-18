@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from "node:url";
 import eslint from "vite-plugin-eslint";
 import { VitePWA } from "vite-plugin-pwa";
 import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -105,9 +106,17 @@ export default defineConfig({
     // 根據當前 Git 分支決定輸出目錄，如果是 "online" 分支，則輸出到 `dist_online`，否則輸出到 `dist`
     outDir: "dist",
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        // 這裡添加了一個新的入口文件，用於加載精靈圖集
+        atlas: resolve(__dirname, "src/assets/animation/02.atlas")
+      },
       output: {
         // 定義資源文件的輸出路徑和命名規則
         assetFileNames: (assetInfo) => {
+          // if (assetInfo.name.includes("02")) {
+          //   console.log(assetInfo.name);
+          // }
           let extType = assetInfo.name.split(".").at(1); // 獲取文件的擴展名
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             extType = "img"; // 如果是圖片文件，將擴展名設置為 "img"
