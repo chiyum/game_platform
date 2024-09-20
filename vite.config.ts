@@ -6,6 +6,7 @@ import eslint from "vite-plugin-eslint";
 import { VitePWA } from "vite-plugin-pwa";
 import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 import { resolve } from "path";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +17,22 @@ export default defineConfig({
     }),
     quasar({
       sassVariables: "src/quasar-variables.sass"
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "src/assets/animation/*.atlas",
+          dest: "assets/animation"
+        },
+        {
+          src: "src/assets/animation/*.json",
+          dest: "assets/animation"
+        },
+        {
+          src: "src/assets/animation/*.webp",
+          dest: "assets/animation"
+        }
+      ]
     }),
     /** 自動導入plugins */
     AutoImport({

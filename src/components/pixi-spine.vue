@@ -7,11 +7,13 @@ import { ref, onMounted } from "vue";
 import * as PIXI from "pixi.js";
 import { Spine } from "pixi-spine";
 import { Assets } from "pixi.js";
-import pixiAtlas from "@/assets/animation/02.atlas";
-import pixiImg from "@/assets/animation/02.webp";
 // import pixiJson from "@/assets/animation/02.json";
 
 const pixiContainer = ref<HTMLDivElement | null>(null);
+
+const pixiAtlas = new URL("@/assets/animation/02.atlas", import.meta.url).href;
+const pixiImg = new URL("@/assets/animation/02.webp", import.meta.url).href;
+const pixiJson = new URL("@/assets/animation/02.json", import.meta.url).href;
 
 onMounted(async () => {
   if (!pixiContainer.value) return;
@@ -33,15 +35,15 @@ onMounted(async () => {
     await Assets.load([
       {
         alias: "spineData",
-        src: new URL("@/assets/animation/02.json", import.meta.url).href
+        src: pixiJson
       },
       {
         alias: "spineAtlas",
-        src: new URL(pixiAtlas, import.meta.url).href
+        src: pixiAtlas
       },
       {
         alias: "spineImage",
-        src: new URL(pixiImg, import.meta.url).href
+        src: pixiImg
       }
     ]);
 
