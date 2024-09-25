@@ -13,7 +13,7 @@ const pixiContainer = ref<HTMLDivElement | null>(null);
 
 const pixiAtlas = import.meta.env.DEV
   ? new URL("@/assets/animation/02.atlas", import.meta.url).href
-  : new URL("/assets/animation/02.atlas", import.meta.url).href;
+  : new URL("/game_platform/assets/animation/02.atlas", import.meta.url).href;
 const pixiImg = new URL("@/assets/animation/02.webp", import.meta.url).href;
 const pixiJson = new URL("@/assets/animation/02.json", import.meta.url).href;
 
