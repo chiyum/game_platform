@@ -34,7 +34,7 @@ const state: State = reactive({
   options: [
     { label: "all", value: "all", icon: "type_bar_icon.svg" },
     { label: "record", value: "record", icon: "record.svg" },
-    { label: "favorite", value: "favorite", icon: "record.svg" }
+    { label: "favorite", value: "favorite", icon: "love_icon.svg" }
   ],
   isShowSelect: false
 });
