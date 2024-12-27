@@ -7,26 +7,29 @@ import { ref, onMounted } from "vue";
 import * as PIXI from "pixi.js";
 import { Spine } from "pixi-spine";
 import { Assets } from "pixi.js";
-// import pixiJson from "@/assets/animation/02.json";
 
 const pixiContainer = ref<HTMLDivElement | null>(null);
 
-const pixiAtlas = import.meta.env.DEV
-  ? new URL("@/assets/animation/02.atlas", import.meta.url).href
-  : new URL("/game_platform/assets/animation/02.atlas", import.meta.url).href;
-const pixiImg = new URL("@/assets/animation/02.webp", import.meta.url).href;
-const pixiJson = new URL("@/assets/animation/02.json", import.meta.url).href;
+// 設定基礎路徑
+const basePath = "/game_platform";
+
+// 設定資源路徑
+const resources = {
+  atlas: `${basePath}/02.atlas`,
+  image: `${basePath}/02.webp`,
+  json: `${basePath}/02.json`
+};
 
 onMounted(async () => {
   if (!pixiContainer.value) return;
 
   // 創建 PIXI Application
   const app = new PIXI.Application({
-    resizeTo: pixiContainer.value, // Automatically resize to the container
-    autoDensity: true, // Adjust for device pixel ratio
+    resizeTo: pixiContainer.value,
+    autoDensity: true,
     resolution: window.devicePixelRatio || 1,
-    backgroundColor: 0x000000, // 設置背景顏色
-    backgroundAlpha: 0 // 設置背景完全透明
+    backgroundColor: 0x000000,
+    backgroundAlpha: 0
   });
 
   // 將 PIXI canvas 添加到 DOM
@@ -37,15 +40,15 @@ onMounted(async () => {
     await Assets.load([
       {
         alias: "spineData",
-        src: pixiJson
+        src: resources.json
       },
       {
         alias: "spineAtlas",
-        src: pixiAtlas
+        src: resources.atlas
       },
       {
         alias: "spineImage",
-        src: pixiImg
+        src: resources.image
       }
     ]);
 
@@ -54,7 +57,8 @@ onMounted(async () => {
 
     // 創建 Spine 實例
     const animation = new Spine(spineData.spineData);
-    animation.state.timeScale = 1; // 根据需要调整此值
+    animation.state.timeScale = 1;
+
     // 設置動畫位置
     animation.x = app.screen.width / 2;
     animation.y = app.screen.height / 1.5;
